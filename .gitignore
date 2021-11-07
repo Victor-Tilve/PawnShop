@@ -7,3 +7,8 @@ Docs/03 - Logo/Logo 1/.~lock.Logo 1.odp#
 source/static/images 2
 
 
+Docs/Documentos Técnicos/02 - Requerimientos/01 - Levantamiento/.~lock.Levantamiento de requerimeinto - DS-RQ-01-V2.odt#
+source/Backend/*/__pycache__/
+source/Backend/*/*/__pycache__/
+source/Backend/*/*/0*.py
+
