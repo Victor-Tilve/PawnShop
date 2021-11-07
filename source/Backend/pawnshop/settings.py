@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     
     #Local
     'users.apps.UsersConfig', #new 
+    'clients.apps.ClientsConfig', #new 
+    'loans.apps.LoansConfig', #new 
 ]
 
 MIDDLEWARE = [
