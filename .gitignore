@@ -12,3 +12,4 @@ source/Backend/*/__pycache__/
 source/Backend/*/*/__pycache__/
 source/Backend/*/*/0*.py
 
+source/Backend/users/migrations/0001_initial.py
