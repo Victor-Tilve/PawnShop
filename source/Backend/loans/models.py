@@ -1,8 +1,12 @@
 from django.db import models
+from datetime import datetime, timedelta
 # from django.core.validators import RegexValidator
 from django.core.validators import MinValueValidator,MaxValueValidator
 
 from clients.models import Client
+
+def get_deadline(date_created,num_meses,):
+    return date_created + timedelta(30*int(num_meses))
 
 # Create your models here.
 class TipoPago(models.Model):
@@ -20,6 +24,8 @@ class Loan(models.Model):
     num_meses       = models.PositiveIntegerField(validators=[MaxValueValidator(12)])
     tipo_pago       = models.ForeignKey(TipoPago, on_delete=models.CASCADE)
 
+    date_created    = models.DateTimeField(auto_now=True)      
+
     def monto_a_pagar(self):
         return self.monto_prestado + (self.monto_prestado * self.interes/100)*self.num_meses
     
@@ -36,7 +42,7 @@ class Loan(models.Model):
         else:
             return None
 
-    date_created    = models.DateTimeField(auto_now=True)          
+    deadline = models.DateField(default=get_deadline)
     
     def __str__(self):
         return f"{self.cliente}: {self.monto_prestado} - {self.date_created}"
