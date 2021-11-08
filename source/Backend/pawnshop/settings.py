@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig', #new 
     'clients.apps.ClientsConfig', #new 
     'loans.apps.LoansConfig', #new 
+    'abonos.apps.AbonosConfig', #new 
 ]
 
 MIDDLEWARE = [
