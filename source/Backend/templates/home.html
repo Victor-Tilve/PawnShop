@@ -6,9 +6,13 @@
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% endblock css %}
 
-{% block title %}Home{% endblock %} 
+{% block title %}
+<title>
+Home
+</title>
+{% endblock %} 
 
-{% block content%} 
+{% block header%} 
 {% if user.is_authenticated %} 
 Hi {{ user.username }}!
 <p><a href="{% url 'logout' %}">logout</a></p>
@@ -16,3 +20,8 @@ Hi {{ user.username }}!
 <p>You are not logged in</p>
 <a href="{% url 'login' %}">login</a> |<a href="{% url 'signup' %}">signup</a>
 {% endif %} {% endblock %}
+
+{% block content %} 
+
+
+{% endblock content %}
