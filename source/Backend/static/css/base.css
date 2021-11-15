@@ -1,0 +1,13 @@
+*
+{
+    height: 800px;
+    width: 1280px;
+}
+h1 {
+    color: red;
+}
+
+.bookcover {
+    height: 300px;
+    width: auto;
+}
