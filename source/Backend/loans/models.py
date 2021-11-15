@@ -5,8 +5,8 @@ from django.core.validators import MinValueValidator,MaxValueValidator
 
 from clients.models import Client
 
-def get_deadline(date_created,num_meses,):
-    return date_created + timedelta(30*int(num_meses))
+def get_deadline(date_created:int,num_meses:int):
+    return timedelta(date_created) + timedelta(30*int(num_meses))
 
 # Create your models here.
 class TipoPago(models.Model):
@@ -17,32 +17,18 @@ class TipoPago(models.Model):
 
 class Loan(models.Model):
     cliente         = models.ForeignKey(Client, on_delete=models.CASCADE)
-    monto_prestado  =  models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)])
+    monto_prestado  =  models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)],default=0)
     interes         = models.FloatField(
-                        validators=[MinValueValidator(0.0), MaxValueValidator(10.0)],
+                        validators=[MinValueValidator(0.0), MaxValueValidator(10.0)],default=0
                     )
-    num_meses       = models.PositiveIntegerField(validators=[MaxValueValidator(12)])
+    num_meses       = models.PositiveIntegerField(validators=[MaxValueValidator(12)],default=1)
     tipo_pago       = models.ForeignKey(TipoPago, on_delete=models.CASCADE)
 
-    date_created    = models.DateTimeField(auto_now=True)      
+    date_created    = models.DateField(auto_now=True)      
 
-    def monto_a_pagar(self):
-        return self.monto_prestado + (self.monto_prestado * self.interes/100)*self.num_meses
-    
-    def num_cuotas(self):
-        tipo_pago = str(self.tipo_pago)
-        if tipo_pago == "Mensual":
-            return self.num_meses * 1
-        elif tipo_pago == "Quincenal":
-            return self.num_meses * 2
-        elif tipo_pago == "Semanal":
-            return self.num_meses * 4
-        elif tipo_pago == "Diario":
-            return self.num_meses * 30
-        else:
-            return None
-
-    deadline = models.DateField(default=get_deadline)
+    monto_a_pagar   = models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)],default=0)
+    num_cuotas      = models.PositiveIntegerField(validators=[MaxValueValidator(1000)],default=1)
+    deadline = models.DateField()
     
     def __str__(self):
         return f"{self.cliente}: {self.monto_prestado} - {self.date_created}"
