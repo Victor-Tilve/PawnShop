@@ -15,8 +15,22 @@
 
   <body>
     {% block header%}
-    <header> </header>
-    {% endblock header%}
+    <!-- Header -->
+    <div id="header">
+      <div id="branding">
+        <h1 id="site-name">
+          <a href="http://127.0.0.1:8000/">Pawnshop</a>
+        </h1>
+      </div>
+      <div id="user-tools">
+        {% if user.is_authenticated %} 
+        Hi <strong>{{ user.username }}</strong>!
+        <p><a href="{% url 'logout' %}">logout</a></p>
+        {% endif %} 
+      </div>
+    </div>
+    <!-- END Header -->
+{% endblock header%}
 
     {% block content %} {% endblock content %}
 

@@ -1,27 +1,37 @@
-{% extends '_base.html' %}
-{%load static%}
-
-{% block css %}
-<!-- CSS -->
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-{% endblock css %}
+{% extends '_base.html' %} 
+{% load static %}
 
 {% block title %}
-<title>
-Home
-</title>
-{% endblock %} 
+<title>Add loan | Django site admin</title>
+{% endblock title %}
 
-{% block header%} 
-{% if user.is_authenticated %} 
-Hi {{ user.username }}!
-<p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">login</a> |<a href="{% url 'signup' %}">signup</a>
-{% endif %} {% endblock %}
+{% block css %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/loan/base.css' %}"
+/>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/loan/forms.css' %}"
+/>
+
+<meta
+  name="viewport"
+  content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"
+/>
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+
+{% endblock css %} 
+
+{% block javascript %}
+{% endblock javascript %}
+
+
 
 {% block content %} 
-
-
+<h1>Este es el menu general</h1>
 {% endblock content %}
