@@ -4,7 +4,7 @@ from .models import TipoPago
 from clients.models import Client
 
 
-def create_loan(request):
+def loan_create_view(request):
     form = LoanForm()
 
     if request.method == 'POST':
@@ -13,7 +13,7 @@ def create_loan(request):
         if form.is_valid():
             print('Is valid')
             form.save()
-            return redirect('home/')  # 4
+            return redirect('/')  # 4
         else:  # 5
             # Create an empty form instance
             form = LoanForm()
@@ -25,8 +25,11 @@ def create_loan(request):
         'tipo_pagos': tipo_pagos,
         'clientes': clientes,
         }
-    return render(request, 'loans/_loans.html', context)
+    return render(request, 'loans/prestamos_crear.html', context)
 
 
-def post_list(request):
-    return render(request, 'home.html', {})
+def loan_home_view(request):
+    return render(request, 'loans/prestamos_home.html', {})
+
+def loan_search_view(request):
+    return render(request, 'loans/prestamos_buscar.html', {})

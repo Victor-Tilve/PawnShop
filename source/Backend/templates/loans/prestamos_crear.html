@@ -2,7 +2,13 @@
 {% load static %}
 
 {% block title %}
-<title>Add loan | Django site admin</title>
+<title>Add loan</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+<link href= "{% static 'css/autocomplete/jquery-ui.css' %}"
+    rel="stylesheet" type="text/css" />  
 {% endblock title %}
 
 {% block css %}
@@ -30,25 +36,6 @@
 {% block javascript %}
 {% endblock javascript %}
 
-{% block header%}
-      <!-- Header -->
-      <div id="header">
-        <div id="branding">
-          <h1 id="site-name">
-            <a href="http://127.0.0.1:8000/">Pawnshop</a>
-          </h1>
-        </div>
-        <div id="user-tools">
-          {% if user.is_authenticated %} 
-          Hi <strong>{{ user.username }}</strong>!
-          <p><a href="{% url 'logout' %}">logout</a></p>
-          {% endif %} 
-        </div>
-      </div>
-      <!-- END Header -->
-{% endblock header%}
-    
-
 
 {% block content %} 
   <!-- Content -->
@@ -67,12 +54,44 @@
                 >
 
                 <div class="related-widget-wrapper">
-                  <select name="cliente" required="" id="id_cliente">
-                    <option value="" selected="">---------</option>
-                    {% for cliente in clientes %}
-                    <option value="{{cliente.pk}}">{{cliente.nombre}}</option>
-                    {% endfor %}
-                  </select>
+                  <input type="text" id="cliente-name" >
+                  <input type="hidden" id="client-id" name="cliente">
+                    <script>
+                      $( function() {
+                            var availableTags = [
+                            {% for cliente in clientes %}
+                            {
+                              value: "{{cliente.pk}}",
+                              label: "{{cliente.nombre}}",
+                              last_name: "{{cliente.apellido}}",
+                            },
+                            {% endfor %}
+                            // "{{cliente.pk}} {{cliente.nombre}} {{cliente.apellido}}",
+                            // "{{cliente.nombre}}",
+                            ];
+                            $( "#cliente-name" ).autocomplete({
+                                                            minLength: 1,
+                                                            source: availableTags,
+                                                            focus: function( event, ui ) {
+                                                              $( "#cliente-name" ).val( ui.item.label + ' ' + ui.item.last_name );
+                                                              return false;
+                                                            },
+                                                            select: function( event, ui ) {
+                                                                                            $( "#cliente-name" ).val( ui.item.label + ' ' + ui.item.last_name );
+                                                                                            $( "#client-id" ).val( ui.item.value );                  
+                                                                                            return false;
+                                                                                          }
+                                                          })
+                            .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                            return $( "<li>" )
+                              .append( "<div>" + item.label + " " + item.last_name + "</div>" )
+                              .appendTo( ul );
+                              };
+                        } );
+                      </script>
+
+
+                  
                 </div>
               </div>
             </div>
