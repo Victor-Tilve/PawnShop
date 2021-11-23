@@ -47,15 +47,72 @@
         {% csrf_token %}
         <div>
           <fieldset class="module aligned">
+            
+            <div class="form-row field-id">
+              <div>
+
+                <label class="required" for="id_pk"
+                  >ID:</label
+                >
+
+                <div class="related-widget-wrapper">
+                  <input type="text" id="client-id" name="cliente" >
+                    <script>
+                      $(function () {
+                        var availableTags = [
+                          {% for cliente in clientes %}
+                          {
+                            value: "{{cliente.pk}}",
+                            label: "{{cliente.nombre}}",
+                            last_name: "{{cliente.apellido}}",
+                          },
+                          {% endfor %}
+                          // "{{cliente.pk}} {{cliente.nombre}} {{cliente.apellido}}",
+                          // "{{cliente.nombre}}",
+                        ];
+                        $("#client-id")
+                          .autocomplete({
+                            minLength: 0,
+                            source: availableTags,
+                            focus: function (event, ui) {
+                              $("#client-id").val(ui.item.value);
+                              return false;
+                            },
+                            select: function (event, ui) {
+                              $("#cliente-name").val(ui.item.label + " " + ui.item.last_name);
+                              $("#client-id").val(ui.item.value);
+                              return false;
+                            },
+                          })
+                          .autocomplete("instance")._renderItem = function (ul, item) {
+                          return $("<li>")
+                            .append(
+                              "<div>" +
+                                item.value +
+                                " " +
+                                item.label +
+                                " " +
+                                item.last_name +
+                                "</div>"
+                            )
+                            .appendTo(ul);
+                        };
+                      });
+                    </script>
+                </div>
+              </div>
+            </div>
+            
             <div class="form-row field-cliente">
               <div>
+                
                 <label class="required" for="id_cliente"
                   >Cliente:</label
                 >
 
                 <div class="related-widget-wrapper">
                   <input type="text" id="cliente-name" >
-                  <input type="hidden" id="client-id" name="cliente">
+                  <!-- <input type="hidden" id="client-id" name="cliente"> -->
                     <script>
                       $( function() {
                             var availableTags = [
@@ -73,7 +130,7 @@
                                                             minLength: 1,
                                                             source: availableTags,
                                                             focus: function( event, ui ) {
-                                                              $( "#cliente-name" ).val( ui.item.label + ' ' + ui.item.last_name );
+                                                              $( "#cliente-name" ).val( ui.item.value + ' ' + ui.item.label + ' ' + ui.item.last_name );
                                                               return false;
                                                             },
                                                             select: function( event, ui ) {
@@ -84,7 +141,7 @@
                                                           })
                             .autocomplete( "instance" )._renderItem = function( ul, item ) {
                             return $( "<li>" )
-                              .append( "<div>" + item.label + " " + item.last_name + "</div>" )
+                              .append( "<div>" + item.value + " " + item.label + " " + item.last_name + "</div>" )
                               .appendTo( ul );
                               };
                         } );
@@ -131,6 +188,29 @@
               </div>
             </div>
 
+            <div class="form-row field-tipo_pago">
+              <div>
+                <label class="required" for="id_tipo_pago"
+                  >Tipo pago:</label
+                >
+
+                <div class="related-widget-wrapper">
+                  <select
+                    name="tipo_pago"
+                    required=""
+                    id="id_tipo_pago"
+                    onchange="NumCuotas(event)"
+                  >
+                    <option value="" selected="">---------</option>
+
+                    {% for tipo_pago in tipo_pagos %}
+                    <option value="{{tipo_pago.pk}}">{{tipo_pago.tipo}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+
             <div class="form-row field-num_meses">
               <div>
                 <label class="required" for="id_num_meses"
@@ -146,28 +226,6 @@
                   required=""
                   id="id_num_meses"
                 />
-              </div>
-            </div>
-
-            <div class="form-row field-tipo_pago">
-              <div>
-                <label class="required" for="id_tipo_pago"
-                  >Tipo pago:</label
-                >
-
-                <div class="related-widget-wrapper">
-                  <select
-                    name="tipo_pago"
-                    required=""
-                    id="id_tipo_pago"
-                  >
-                    <option value="" selected="">---------</option>
-
-                    {% for tipo_pago in tipo_pagos %}
-                    <option value="{{tipo_pago.pk}}">{{tipo_pago.tipo}}</option>
-                    {% endfor %}
-                  </select>
-                </div>
               </div>
             </div>
 
@@ -204,6 +262,7 @@
                   required=""
                   id="id_num_cuotas"
                 />
+                <script src="{% static 'js/numeroCuotas.js' %}"></script>
               </div>
             </div>
 
@@ -212,7 +271,6 @@
                 <label class="required" for="id_deadline"
                   >Deadline:</label
                 >
-
                 <input
                   type="text"
                   name="deadline"
@@ -223,7 +281,7 @@
                   spellcheck="false"
                   data-ms-editor="true"
                 />
-                
+
               </div>
             </div>
           </fieldset>
