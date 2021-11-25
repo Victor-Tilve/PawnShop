@@ -62,8 +62,8 @@
                         var availableTags = [
                           {% for cliente in clientes %}
                           {
-                            value: "{{cliente.pk}}",
-                            label: "{{cliente.nombre}}",
+                            nombre: "{{cliente.nombre}}",
+                            label: "{{cliente.pk}}",
                             last_name: "{{cliente.apellido}}",
                           },
                           {% endfor %}
@@ -75,12 +75,12 @@
                             minLength: 0,
                             source: availableTags,
                             focus: function (event, ui) {
-                              $("#client-id").val(ui.item.value);
+                              $("#client-id").val(ui.item.label);
                               return false;
                             },
                             select: function (event, ui) {
-                              $("#cliente-name").val(ui.item.label + " " + ui.item.last_name);
-                              $("#client-id").val(ui.item.value);
+                              $("#cliente-name").val(ui.item.nombre + " " + ui.item.last_name);
+                              $("#client-id").val(ui.item.label);
                               return false;
                             },
                           })
@@ -88,9 +88,9 @@
                           return $("<li>")
                             .append(
                               "<div>" +
-                                item.value +
-                                " " +
                                 item.label +
+                                " " +
+                                item.nombre +
                                 " " +
                                 item.last_name +
                                 "</div>"
@@ -167,6 +167,7 @@
                   min="0"
                   required=""
                   id="id_monto_prestado"
+                  
                 />
               </div>
             </div>
@@ -184,6 +185,26 @@
                   step="any"
                   required=""
                   id="id_interes"
+                  
+                />
+              </div>
+
+            </div>
+
+            <div class="form-row field-num_meses">
+              <div>
+                <label class="required" for="id_num_meses"
+                  >Num meses:</label
+                >
+
+                <input
+                  type="number"
+                  name="num_meses"
+                  value="1"
+                  class="vIntegerField"
+                  min="0"
+                  required=""
+                  id="id_num_meses"
                 />
               </div>
             </div>
@@ -211,30 +232,11 @@
               </div>
             </div>
 
-            <div class="form-row field-num_meses">
-              <div>
-                <label class="required" for="id_num_meses"
-                  >Num meses:</label
-                >
-
-                <input
-                  type="number"
-                  name="num_meses"
-                  value="1"
-                  class="vIntegerField"
-                  min="0"
-                  required=""
-                  id="id_num_meses"
-                />
-              </div>
-            </div>
-
             <div class="form-row field-monto_a_pagar">
               <div>
                 <label class="required" for="id_monto_a_pagar"
                   >Monto a pagar:</label
                 >
-
                 <input
                   type="number"
                   name="monto_a_pagar"
@@ -243,7 +245,9 @@
                   min="0"
                   required=""
                   id="id_monto_a_pagar"
+                  readonly
                 />
+                <script src="{% static 'js/montoapagar.js' %}"></script>
               </div>
             </div>
 
@@ -272,7 +276,7 @@
                   >Deadline:</label
                 >
                 <input
-                  type="text"
+                  type="date"
                   name="deadline"
                   class="vDateField"
                   size="10"
