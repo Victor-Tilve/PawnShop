@@ -1,31 +1,9 @@
-{% extends '_base.html' %} 
+{% extends 'base.html' %} 
 {% load static %}
 
 {% block title %}
 <title>Add loan | Django site admin</title>
 {% endblock title %}
-
-{% block css %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/loan/base.css' %}"
-/>
-
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/loan/forms.css' %}"
-/>
-
-<meta
-  name="viewport"
-  content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"
-/>
-
-<meta name="robots" content="NONE,NOARCHIVE" />
-
-{% endblock css %} 
 
 {% block javascript %}
 {% endblock javascript %}
@@ -33,4 +11,6 @@
 
 {% block content %} 
 <h1>Este es el Resumen de Prestamos</h1>
+<a class="p-2 text-dark" href="{% url 'loans-crear' %}">Crear préstamo</a>
+<a class="p-2 text-dark" href="{% url 'loans-buscar' %}">Buscar préstamo</a>
 {% endblock content %}
