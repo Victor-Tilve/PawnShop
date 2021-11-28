@@ -1,0 +1,34 @@
+{% extends '_base.html' %} {%load static%} {% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+
+{% endblock css %} {% block title %}
+<title>Login</title>
+{% endblock %} {% block content %}
+
+<div class="content">
+  <img src="{% static 'images/Logo.png' %}" alt="IMG" />
+  <form method="POST" class="login-form">
+    <h2>Iniciar sesión</h2>
+
+    {% csrf_token %}
+    <input
+      type="input"
+      class="form-control-username"
+      name="username"
+      id="inputEmail"
+      placeholder="Username"
+      required
+    />
+    <input
+      type="password"
+      class="form-control-password"
+      name="password"
+      id="inputPass"
+      placeholder="Password"
+      required
+    />
+    <button type="submit" class="login-form-btn">Login</button>
+  </form>
+</div>
+
+{% endblock %}

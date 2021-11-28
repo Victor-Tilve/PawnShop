@@ -160,6 +160,24 @@
                 >
 
                 <input
+                  type="date"
+                  name="date_created"
+                  value="0"
+                  class="vDateField"
+                  min="0"
+                  required=""
+                  id="id_date_created"
+                />
+              </div>
+            </div>
+
+            <div class="form-row field-monto_prestado">
+              <div>
+                <label class="required" for="id_monto_prestado"
+                  >Monto prestado:</label
+                >
+
+                <input
                   type="number"
                   name="monto_prestado"
                   value="0"
@@ -247,7 +265,7 @@
                   id="id_monto_a_pagar"
                   readonly
                 />
-                <script src="{% static 'js/montoapagar.js' %}"></script>
+                <script src="{% static 'js/loan/montoapagar.js' %}"></script>
               </div>
             </div>
 
@@ -266,7 +284,7 @@
                   required=""
                   id="id_num_cuotas"
                 />
-                <script src="{% static 'js/numeroCuotas.js' %}"></script>
+                <script src="{% static 'js/loan/numeroCuotas.js' %}"></script>
               </div>
             </div>
 
@@ -285,7 +303,7 @@
                   spellcheck="false"
                   data-ms-editor="true"
                 />
-
+                <script src="{% static 'js/loan/dead_line.js' %}"></script>
               </div>
             </div>
           </fieldset>
