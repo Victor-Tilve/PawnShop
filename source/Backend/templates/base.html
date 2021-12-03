@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     {% block title %}
     <title>Pawnshop</title>
     {% endblock title %}
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -25,12 +26,10 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+
+
     {% block css %} 
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"
-  ></script>
+    
     {% endblock css %}
   </head>
 
@@ -52,8 +51,8 @@
       <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> -->
       <img src="{% static 'images/login/p.png' %}" class="mr-md-auto float-left" alt="" height="70" />
       <nav class="my-2 my-md-0 mr-md-3 h3">
-        <a class="p-2 text-dark" href="#">Home</a>
-        <a class="p-2 text-dark" href="#">Clientes</a>
+        <a class="p-2 text-dark" href="{% url 'home' %}">Home</a>
+        <a class="p-2 text-dark" href="{% url 'clients-home' %}">Clientes</a>
         <a class="p-2 text-dark" href="{% url 'loans-home' %}">Préstamos</a>
         <a class="p-2 text-dark" href="#">Abonos</a>
         <a class="p-2 text-dark" href="#">Adicionales</a>
@@ -66,8 +65,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-          <a class="dropdown-item" href="#">Config</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Configuración</a>
         </div>
       </div>
     </div>
