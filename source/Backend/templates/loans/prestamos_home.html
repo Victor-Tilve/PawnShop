@@ -1,16 +1,7 @@
-{% extends 'base.html' %} 
-{% load static %}
-
-{% block title %}
-<title>Add loan | Django site admin</title>
-{% endblock title %}
-
-{% block javascript %}
-{% endblock javascript %}
-
-
-{% block content %} 
-<h1>Este es el Resumen de Prestamos</h1>
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Préstamos | Home</title>
+{% endblock title %} {% block content %}
+<h2>Este es el Resumen de Prestamos</h2>
 <a class="p-2 text-dark" href="{% url 'loans-crear' %}">Crear préstamo</a>
 <a class="p-2 text-dark" href="{% url 'loans-buscar' %}">Buscar préstamo</a>
 {% endblock content %}
