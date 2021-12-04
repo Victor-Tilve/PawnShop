@@ -16,3 +16,5 @@ source/Backend/*/*/0*.py
 source/Backend/static/css/login/
 source/Backend/Pipfile.lock
 Docs/01 - Documentos guías/Software existente/
+Docs/.~*.odt#
+Docs/.*_hidden*
