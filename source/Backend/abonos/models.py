@@ -10,7 +10,7 @@ from loans.models import Loan
 class Abono(models.Model):
     prestamo        = models.ForeignKey(Loan, on_delete=models.CASCADE)
     abono           = models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)])
-    date_created    = models.DateField(auto_now=True)          
+    date_created    = models.DateField()          
     
     def __str__(self):
         return f"{self.prestamo}: {self.abono} - {self.date_created}"
