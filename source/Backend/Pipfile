@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 psycopg2= "*"
 django = "*"
+pywebview = {extras = ["qt"], version = "*"}
+pyqt5 = "*"
+pyqtwebengine = "*"
+pyinstaller = "*"
 
 [dev-packages]
 autopep8 = "*"

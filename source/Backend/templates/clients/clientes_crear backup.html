@@ -1,0 +1,218 @@
+{% extends '_base.html' %} 
+{% load static %}
+
+{% block title %}
+<title>Add loan | Django site admin</title>
+{% endblock title %}
+
+{% block css %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/loan/base.css' %}"
+/>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/loan/forms.css' %}"
+/>
+
+<meta
+  name="viewport"
+  content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"
+/>
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+
+{% endblock css %} 
+
+{% block javascript %}
+{% endblock javascript %}
+  
+
+
+{% block content %} 
+  <!-- Content -->
+  <div id="content" class="colM">
+    <h1>Add client</h1>
+
+    <div id="content-main">
+      <form method="post" id="client_form" novalidate="">
+        {% csrf_token %}
+        <div>
+          <fieldset class="module aligned">
+            <div class="form-row field-nombre">
+              <div>
+                <label class="required" for="id_nombre">Nombre:</label>
+
+                <input
+                  type="text"
+                  name="nombre"
+                  class="vTextField"
+                  maxlength="200"
+                  required=""
+                  id="id_nombre"
+                  spellcheck="false"
+                  data-ms-editor="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-row field-apellido">
+              <div>
+                <label class="required" for="id_apellido"
+                  >Apellido:</label
+                >
+
+                <input
+                  type="text"
+                  name="apellido"
+                  class="vTextField"
+                  maxlength="200"
+                  required=""
+                  id="id_apellido"
+                  spellcheck="false"
+                  data-ms-editor="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-row field-cedula">
+              <div>
+                <label class="required" for="id_cedula">Cedula:</label>
+
+                <input
+                  type="text"
+                  name="cedula"
+                  class="vTextField"
+                  maxlength="10"
+                  required=""
+                  id="id_cedula"
+                  spellcheck="false"
+                  data-ms-editor="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-row field-telefono">
+              <div>
+                <label class="required" for="id_telefono"
+                  >Telefono:</label
+                >
+
+                <input
+                  type="text"
+                  name="telefono"
+                  class="vTextField"
+                  maxlength="10"
+                  required=""
+                  id="id_telefono"
+                  spellcheck="false"
+                  data-ms-editor="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-row field-direccion">
+              <div>
+                <label class="required" for="id_direccion"
+                  >Direccion:</label
+                >
+
+                <input
+                  type="text"
+                  name="direccion"
+                  class="vTextField"
+                  maxlength="200"
+                  required=""
+                  id="id_direccion"
+                  spellcheck="false"
+                  data-ms-editor="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-row field-direccion2">
+              <div>
+                <label class="required" for="id_direccion2"
+                  >Direccion2:</label
+                >
+
+                <input
+                  type="text"
+                  name="direccion2"
+                  class="vTextField"
+                  maxlength="200"
+                  required=""
+                  id="id_direccion2"
+                  spellcheck="false"
+                  data-ms-editor="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-row field-ref1">
+              <div>
+                <label class="required" for="id_ref1">Ref1:</label>
+
+                <input
+                  type="text"
+                  name="ref1"
+                  class="vTextField"
+                  maxlength="200"
+                  required=""
+                  id="id_ref1"
+                  spellcheck="false"
+                  data-ms-editor="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-row field-telefono_ref1">
+              <div>
+                <label class="required" for="id_telefono_ref1"
+                  >Telefono ref1:</label
+                >
+
+                <input
+                  type="text"
+                  name="telefono_ref1"
+                  class="vTextField"
+                  maxlength="10"
+                  required=""
+                  id="id_telefono_ref1"
+                  spellcheck="false"
+                  data-ms-editor="true"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="submit-row">
+            <input
+              type="submit"
+              value="Save"
+              class="default"
+              name="_save"
+            />
+
+            <input
+              type="submit"
+              value="Save and add another"
+              name="_addanother"
+            />
+
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <br class="clear" />
+  </div>
+  <!-- END Content -->
+{% endblock content %}
+
+{% block footer %} 
+<div id="footer"></div>
+{% endblock footer %}

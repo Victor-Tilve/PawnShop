@@ -8,16 +8,7 @@ from .models import TipoPago, Loan
 class LoanForm(ModelForm):
     class Meta:
         model = Loan
-        fields = [
-            'cliente',
-             'monto_prestado',
-             'interes',
-             'num_meses',
-             'tipo_pago',
-             'monto_a_pagar',
-             'num_cuotas',
-             'deadline',
-             ]
+        fields = "__all__"
 
 # Desplegar información en drop dawn
 

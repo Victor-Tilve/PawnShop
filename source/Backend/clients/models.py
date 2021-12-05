@@ -8,10 +8,10 @@ class Client(models.Model):
     cedula = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{1,10}$')],null=False)
     telefono = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{1,10}$')],null=False)
     direccion = models.CharField(max_length=200,null=False)
-    direccion2 = models.CharField(max_length=200,null=False)
+    direccion2 = models.CharField(max_length=200,blank=True)
 
-    ref1 = models.CharField(max_length=200,null=False)
-    telefono_ref1 = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{1,10}$')],null=False)
+    ref1 = models.CharField(max_length=200,blank=True)
+    telefono_ref1 = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{1,10}$')], blank=True)
              
     def __str__(self):
         return f"{self.nombre} {self.apellido}"

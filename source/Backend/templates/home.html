@@ -1,31 +1,13 @@
-{% extends '_base.html' %} 
+{% extends 'base.html' %} 
 {% load static %}
 
 {% block title %}
-<title>Add loan | Django site admin</title>
+<title>Home</title>
+
 {% endblock title %}
 
-{% block css %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/loan/base.css' %}"
-/>
-
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/loan/forms.css' %}"
-/>
-
-<meta
-  name="viewport"
-  content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"
-/>
-
-<meta name="robots" content="NONE,NOARCHIVE" />
-
-{% endblock css %} 
+{% block css %} 
+{% endblock css %}
 
 {% block javascript %}
 {% endblock javascript %}
@@ -33,5 +15,5 @@
 
 
 {% block content %} 
-<h1>Este es el menu general</h1>
+<h2>Este es el menu general</h2>
 {% endblock content %}

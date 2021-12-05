@@ -15,6 +15,7 @@ def client_create_view(request):
             return redirect('/')  # 4
         else:  # 5
             # Create an empty form instance
+            print('Is not valid')
             form = ClientForm()
 
     context = {

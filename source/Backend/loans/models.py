@@ -24,7 +24,7 @@ class Loan(models.Model):
     num_meses       = models.PositiveIntegerField(validators=[MaxValueValidator(12)],default=1)
     tipo_pago       = models.ForeignKey(TipoPago, on_delete=models.CASCADE)
 
-    date_created    = models.DateField(auto_now=True)      
+    date_created    = models.DateField()      
 
     monto_a_pagar   = models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)],default=0)
     num_cuotas      = models.PositiveIntegerField(validators=[MaxValueValidator(1000)],default=1)
