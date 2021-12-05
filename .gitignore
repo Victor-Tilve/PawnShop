@@ -15,3 +15,4 @@ source/Backend/*/*/0*.py
 source/Backend/*/*/0*.py
 source/Backend/static/css/login/
 source/Backend/Pipfile.lock
+source/Backend/app/
