@@ -4,4 +4,28 @@
 <h2>Este es el Resumen de Prestamos</h2>
 <a class="p-2 text-dark" href="{% url 'loans-crear' %}">Crear préstamo</a>
 <a class="p-2 text-dark" href="{% url 'loans-buscar' %}">Buscar préstamo</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Codigo prestamo</th>
+      <th scope="col">Monto prestado</th>
+      <th scope="col">Monto a pagar</th>
+      <th scope="col">Numero de meses</th>
+      <th scope="col">ID Cliente</th>
+      <th scope="col">Nombre cliente</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for prestamo in prestamos %}
+  <tr>
+    <th scope="row">{{prestamo.pk}}</th>
+    <td>{{prestamo.monto_prestado}}</td>
+    <td>{{prestamo.monto_a_pagar}}</td>
+    <td>{{prestamo.num_meses}}</td>
+    <td>{{prestamo.date_created}}</td>
+    <td>{{prestamo.deadline}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
 {% endblock content %}

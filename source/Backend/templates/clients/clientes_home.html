@@ -5,4 +5,24 @@
 <h2>Este es el Resumen de Clientes</h2>
 <a class="p-2 text-dark" href="{% url 'clients-crear' %}">Crear Clientes</a>
 <a class="p-2 text-dark" href="{% url 'clients-buscar' %}">Buscar Clientes</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Cédula</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for cliente in clientes %}
+  <tr>
+    <th scope="row">{{cliente.pk}}</th>
+    <td>{{cliente.nombre}}</td>
+    <td>{{cliente.apellido}}</td>
+    <td>{{cliente.cedula}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
 {% endblock content %}

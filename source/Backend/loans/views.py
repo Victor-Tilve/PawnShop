@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .form import LoanForm
 from .models import TipoPago
 from clients.models import Client
+from .models import Loan
 
 
 def loan_create_view(request):
@@ -29,7 +30,15 @@ def loan_create_view(request):
 
 
 def loan_home_view(request):
-    return render(request, 'loans/prestamos_home.html', {})
+    clientes = Client.objects.all().order_by('pk')
+    prestamos = Loan.objects.all().order_by('pk')
+
+    context = {
+        'clientes': clientes,
+        'prestamos': prestamos,
+
+         }
+    return render(request, 'loans/prestamos_home.html', context)
 
 def loan_search_view(request):
     return render(request, 'loans/prestamos_buscar.html', {})
