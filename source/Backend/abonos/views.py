@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .form import AbonoForm
 from loans.models import Loan
 from clients.models import Client
+from .models import Abono
 from django.http import JsonResponse
 import json
 
@@ -14,7 +15,7 @@ def abono_create_view(request):
         if form.is_valid():
             print('Is valid')
             form.save()
-            return redirect('/')  # 4
+            return redirect('/abonos/')  # 4
         else:  # 5
             # Create an empty form instance
             form = AbonoForm()
@@ -75,4 +76,22 @@ def check_prestamo_informacion(request):
         return JsonResponse({"_prestamo_imformacion":prestamo_imformacion}, status = 200)
 
 
+    return JsonResponse({}, status = 400)
+
+def tabla_abono(request):
+    if request.is_ajax and request.method == "GET":
+        tables = []
+        abono_table = Abono.objects.values()
+        for abonos in abono_table:
+            cliente_id = list(Loan.objects.filter(pk=abonos["prestamo_id"]).values())[0]["cliente_id"]
+            monto_prestado = list(Loan.objects.filter(pk=abonos["prestamo_id"]).values())[0]["monto_prestado"]
+            cliente_nombre = list(Client.objects.filter(pk=cliente_id).values())[0]["nombre"]
+            cliente_apellido = list(Client.objects.filter(pk=cliente_id).values())[0]["apellido"]
+            tables.append(
+                f'<tr><th scope="row">{cliente_id}</th><td>{cliente_nombre}</td><td>{abonos["id"]}</td><td>{monto_prestado}</td><td>{abonos["date_created"]}</td><td>{abonos["abono"]}</td></tr>'
+            )
+        
+        return JsonResponse({"_abonos_imformacion":tables}, status = 200)
+
+        
     return JsonResponse({}, status = 400)
