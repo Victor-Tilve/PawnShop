@@ -15,17 +15,8 @@
       <th scope="col">Nombre cliente</th>
     </tr>
   </thead>
-  <tbody>
-  {% for prestamo in prestamos %}
-  <tr>
-    <th scope="row">{{prestamo.pk}}</th>
-    <td>{{prestamo.monto_prestado}}</td>
-    <td>{{prestamo.monto_a_pagar}}</td>
-    <td>{{prestamo.num_meses}}</td>
-    <td>{{prestamo.date_created}}</td>
-    <td>{{prestamo.deadline}}</td>
-  </tr>
-  {% endfor %}
+  <tbody id="id_tabla_prestamo">
   </tbody>
 </table>
+<script src="{% static 'js/loan/tabla_loan.js' %}"></script>
 {% endblock content %}
