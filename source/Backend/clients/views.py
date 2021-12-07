@@ -12,7 +12,7 @@ def client_create_view(request):
         if form.is_valid():
             print('Is valid')
             form.save()
-            return redirect('/')  # 4
+            return redirect('/clients/')  # 4
         else:  # 5
             # Create an empty form instance
             print('Is not valid')
