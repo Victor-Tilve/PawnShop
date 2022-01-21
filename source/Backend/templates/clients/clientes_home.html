@@ -7,14 +7,14 @@
 <a class="p-2 text-dark" href="{% url 'clients-buscar' %}">Buscar Clientes</a>
 <table class="table">
   <thead>
-    <tr>
+    <tr class="h4 text-center">
       <th scope="col">ID</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">Cédula</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="id_tabla_clients" class="h4 text-center">
   {% for cliente in clientes %}
   <tr>
     <th scope="row">{{cliente.pk}}</th>
