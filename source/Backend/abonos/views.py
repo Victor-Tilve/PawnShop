@@ -1,3 +1,4 @@
+from django.db.models.fields import Field
 from django.shortcuts import render, redirect
 from .form import AbonoForm
 from loans.models import Loan
@@ -5,6 +6,8 @@ from clients.models import Client
 from .models import Abono
 from django.http import JsonResponse
 import json
+
+from django.views.generic import DetailView
 
 def abono_create_view(request):
     form = AbonoForm()
@@ -72,8 +75,8 @@ def check_prestamo_informacion(request):
         id_prestamo = request.GET.get("id_prestamo", None)
         print(list(Loan.objects.all().filter(pk=id_prestamo).values()))
 
-        prestamo_imformacion = list(Loan.objects.all().filter(pk=id_prestamo).values())
-        return JsonResponse({"_prestamo_imformacion":prestamo_imformacion}, status = 200)
+        prestamo_informacion = list(Loan.objects.all().filter(pk=id_prestamo).values())
+        return JsonResponse({"_prestamo_informacion":prestamo_informacion}, status = 200)
 
 
     return JsonResponse({}, status = 400)
@@ -95,3 +98,25 @@ def tabla_abono(request):
 
         
     return JsonResponse({}, status = 400)
+
+
+def abono_detalle(request):
+    # request should be ajax and method should be GET.
+    if request.is_ajax and request.method == "GET":
+        # get the nick name from the client side.
+        # print(f'el codigo del prestamo es: {request.GET.get("id_prestamo", None)}')
+        id_prestamo = request.GET.get("id_prestamo", None)
+                
+        prestamo_informacion = list(Loan.objects.all().filter(pk=id_prestamo).values())
+        persona_informacion = list(Client.objects.all().filter(pk=prestamo_informacion[0]['cliente_id']).values())
+        # print(prestamo_informacion[0])
+        # print(persona_informacion[0])
+        return JsonResponse({"_prestamo_informacion":prestamo_informacion,"_persona_informacion":persona_informacion}, status = 200)
+        
+
+
+    return JsonResponse({}, status = 400)
+
+class AbonosDetailView(DetailView):
+    model = Abono
+    template_name = 'abonos/abono_detalle.html'
