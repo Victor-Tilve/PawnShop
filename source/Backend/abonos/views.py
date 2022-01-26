@@ -68,15 +68,24 @@ def check_prestamos_cliente(request):
 
     return JsonResponse({}, status = 400)
 
+# Metodo utlizado al momento de Crear un nuevo abono. 
 def check_prestamo_informacion(request):
     # request should be ajax and method should be GET.
     if request.is_ajax and request.method == "GET":
         # get the nick name from the client side.
         id_prestamo = request.GET.get("id_prestamo", None)
-        print(list(Loan.objects.all().filter(pk=id_prestamo).values()))
+        
+        abono_informacion = list(Abono.objects.all().filter(prestamo=id_prestamo).values())
+        #If abono_informacion is empty
+        #if there are more than one, pick the last one
+        #Else, un solo dato
+        if len(abono_informacion) == 0:
+            abono_informacion = [{'abono': 0,'date_created': "mm/dd/yyyy"}]
+        elif len(abono_informacion) > 1:
+            abono_informacion = [abono_informacion[-1]]
 
         prestamo_informacion = list(Loan.objects.all().filter(pk=id_prestamo).values())
-        return JsonResponse({"_prestamo_informacion":prestamo_informacion}, status = 200)
+        return JsonResponse({"_prestamo_informacion":prestamo_informacion,"_abono_informacion":abono_informacion}, status = 200)
 
 
     return JsonResponse({}, status = 400)
@@ -117,6 +126,7 @@ def abono_detalle(request):
 
     return JsonResponse({}, status = 400)
 
+##COMEBACK: NO Recuerdo en donde estoy utilizando
 class AbonosDetailView(DetailView):
     model = Abono
     template_name = 'abonos/abono_detalle.html'

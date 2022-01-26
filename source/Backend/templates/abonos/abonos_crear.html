@@ -275,8 +275,8 @@
           </div>
           <div class="row ml-4 mt-4 mb-4 FechaUltimoAbono">
             <div class="col-1">
-              <label class="required" for="id_monto_a_pagar">
-                <strong> <h5>Fecha Ultimo Abono:</h5> </strong>
+              <label class="required" for="id_Abono_a_pagar">
+                <strong> <h5>Último Abono:</h5> </strong>
               </label>
             </div>
             <div class="col-2">
@@ -290,14 +290,30 @@
                 readonly
               />
             </div>
+            <div class="col-1">
+              <label class="required" for="id_monto_a_pagar">
+                <strong> <h5>Fecha Último Abono:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-2">
+              <input
+                type="date"
+                name="fecha_ultimo_abono"
+                value="0"
+                min="0"
+                required=""
+                id="id_fecha_ultimo_abono"
+                readonly
+              />
+            </div>
           </div>
           <div class="row ml-4 mt-4 mb-4 AbonoAPagar">
             <div class="col-1">
               <label class="required" for="id_Abono_a_pagar">
-                <strong> <h5>Abono:</h5> </strong>
+                <strong> <h5>Abono Actual:</h5> </strong>
               </label>
             </div>
-            <div class="col-1">
+            <div class="col-2">
               <input
                 type="number"
                 name="abono"
@@ -307,8 +323,6 @@
                 id="id_abono_a_pagar"
               />
             </div>
-          </div>
-          <div class="row ml-4 mt-4 mb-4 FechaAbono">
             <div class="col-1">
               <label class="required" for="id_fechaAbono">
                 <strong> <h5>Fechca de abono:</h5> </strong>
@@ -325,7 +339,7 @@
                 data-ms-editor="true"
               />
             </div>
-          </div> 
+          </div>
           
         </fieldset>
 

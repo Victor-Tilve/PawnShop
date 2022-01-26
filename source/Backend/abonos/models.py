@@ -13,5 +13,7 @@ class Abono(models.Model):
     date_created    = models.DateField()          
     
     def __str__(self):
-        return f"{self.prestamo}: {self.abono} - {self.date_created}"
+        return f"{self.pk} {self.prestamo}: {self.abono} - {self.date_created}"
     
+    class Meta:
+        ordering = ('date_created',)
