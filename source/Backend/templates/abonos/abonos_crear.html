@@ -58,6 +58,7 @@
                       minLength: 0,
                       source: availableTags,
                       focus: function (event, ui) {
+                        $("#cliente-name").val(ui.item.nombre + " " + ui.item.last_name);
                         $("#client-id").val(ui.item.label);
                         return false;
                       },

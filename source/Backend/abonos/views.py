@@ -13,10 +13,11 @@ def abono_create_view(request):
     form = AbonoForm()
 
     if request.method == 'POST':
-        print(request.POST)
+        # print(request.POST)
         form = AbonoForm(request.POST)
         if form.is_valid():
-            print('Is valid')
+            # print('Is valid')
+            #TODO: Validate if the ID match to the client
             form.save()
             return redirect('/abonos/')  # 4
         else:  # 5
@@ -41,22 +42,25 @@ def abono_search_view(request):
     return render(request, 'abonos/abonos_buscar.html', {})
 
 def check_prestamos_cliente(request):
+    #Metodo para verificar todos los prestamos asociados a un cliente. se utilizan solo los pk de los prestamos 
     # request should be ajax and method should be GET.
     if request.is_ajax and request.method == "GET":
         # get the nick name from the client side.
         id_cliente = request.GET.get("id_cliente", None)
+        # print ("check_prestamos_cliente:El cliente es" + str(id_cliente))
         loans = Loan.objects.filter(cliente=id_cliente)
-        # print (id_cliente)
-        # print("-----------------------")
-        loans_pk = list(loans.values_list('pk', flat=True).order_by('pk'))
-        # print (loans_pk)
-        # print (loans.values("interes"))
-        # print("-----------------------")
-        # print(list(Client.objects.all().filter(pk=id_cliente).values("nombre"))[0]["nombre"])
-        # print(list(Client.objects.all().filter(pk=id_cliente).values("nombre"))[0]["nombre"])
+        # print ("check_prestamos_cliente:Los prestamos son" + str(loans))
+        
         option_loans = []
-        for loan in loans_pk:
-            option_loans.append(f'<option value="{loan}">{loan}</option>')
+        if len(loans) > 0:
+            # print("check_prestamos_cliente:Dentro del condicional")
+            loans_pk = list(loans.values_list('pk', flat=True).order_by('pk'))
+            for loan in loans_pk:
+                option_loans.append(f'<option value="{loan}">{loan}</option>')
+        else:
+            # print("check_prestamos_cliente:Dentro del Else")
+            option_loans.append(f'<option value="">---------</option>')
+            return JsonResponse({"id_loans":option_loans}, status = 200)
         # print(option_loans)
         # results = {loan.pk():{} for loan in loans }
         # for r in search_qs:
@@ -68,24 +72,28 @@ def check_prestamos_cliente(request):
 
     return JsonResponse({}, status = 400)
 
-# Metodo utlizado al momento de Crear un nuevo abono. 
+# Metodo utlizado al momento de Crear un nuevo abono. toma el valor del prestamo y complementa el resto de informacióń del mismo
 def check_prestamo_informacion(request):
     # request should be ajax and method should be GET.
     if request.is_ajax and request.method == "GET":
         # get the nick name from the client side.
         id_prestamo = request.GET.get("id_prestamo", None)
-        
-        abono_informacion = list(Abono.objects.all().filter(prestamo=id_prestamo).values())
-        #If abono_informacion is empty
-        #if there are more than one, pick the last one
-        #Else, un solo dato
-        if len(abono_informacion) == 0:
-            abono_informacion = [{'abono': 0,'date_created': "mm/dd/yyyy"}]
-        elif len(abono_informacion) > 1:
-            abono_informacion = [abono_informacion[-1]]
+        # print("check_prestamo_informacion: Dentro")
+        # print ("check_prestamo_informacion: Id prestamo" + str(id_prestamo))
+        if id_prestamo != "":
+            abono_informacion = list(Abono.objects.all().filter(prestamo=id_prestamo).values())
+            #If abono_informacion is empty
+            #if there are more than one, pick the last one
+            #Else, un solo dato
+            if len(abono_informacion) == 0:
+                abono_informacion = [{'abono': 0,'date_created': "mm/dd/yyyy"}]
+            elif len(abono_informacion) > 1:
+                abono_informacion = [abono_informacion[-1]]
 
-        prestamo_informacion = list(Loan.objects.all().filter(pk=id_prestamo).values())
-        return JsonResponse({"_prestamo_informacion":prestamo_informacion,"_abono_informacion":abono_informacion}, status = 200)
+            prestamo_informacion = list(Loan.objects.all().filter(pk=id_prestamo).values())
+            return JsonResponse({"_prestamo_informacion":prestamo_informacion,"_abono_informacion":abono_informacion}, status = 200)
+        else:
+            return JsonResponse({"_prestamo_informacion":"---------","_abono_informacion":"---------"}, status = 200)
 
 
     return JsonResponse({}, status = 400)

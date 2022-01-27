@@ -29,7 +29,11 @@ class Loan(models.Model):
     monto_a_pagar   = models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)],default=0)
     num_cuotas      = models.PositiveIntegerField(validators=[MaxValueValidator(1000)],default=1)
     deadline = models.DateField()
-    
+    #TODO: Agregar -  Acotar el formulario al empezar a trabajar sobre esto para poder seguir trabajando como esta ahora
+        #-status
+        #-last modification
+        #-who created
+        
     def __str__(self):
         return f"{self.cliente}: {self.monto_prestado} - {self.date_created}"
     
