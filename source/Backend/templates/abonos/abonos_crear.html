@@ -39,7 +39,7 @@
               </label>
             </div>
             <div class="col-2">
-              <input type="text" id="client-id" name="cliente" />
+              <input type="text" id="client-id" name="cliente" required=""/>
               <script>
                 $(function () {
                   var availableTags = [
@@ -90,7 +90,7 @@
               </label>
             </div>
             <div class="col-1">
-              <input type="text" id="cliente-name" />
+              <input type="text" id="cliente-name" required=""/>
               <!-- <input type="hidden" id="client-id" name="cliente"> -->
               <script>
                 $( function() {
@@ -344,18 +344,12 @@
           
         </fieldset>
 
-        <div class="row float-right mt-3">
-          <button type="submit" class="btn btn-light ml-3 mr-3" name="save">
-            <strong><h4>Guardar</h4></strong>
+        <div class="row float-left mt-3 ml-3">
+          <button type="submit" class="btn btn-light ml-3 mr-3 text-dark" name="save">
+            <a><strong><h4>Guardar</h4></strong></a>
           </button>
-          <button
-            type="submit"
-            class="btn btn-light ml-3 mr-3"
-            value="Save and add another"
-            name="_addanother"
-            name="save"
-          >
-            <strong><h4>Save and add another</h4></strong>
+          <button class="btn btn-light ml-3 mr-3">
+            <strong><h4><a href="{% url 'abonos-home' %}" class="text-dark">Cancel</a></h4></strong>
           </button>
         </div>
 

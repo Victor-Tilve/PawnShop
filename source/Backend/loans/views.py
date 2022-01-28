@@ -9,7 +9,7 @@ def loan_create_view(request):
     form = LoanForm()
 
     if request.method == 'POST':
-        print(request.POST)
+        # print(request.POST)
         form = LoanForm(request.POST)
         if form.is_valid():
             print('Is valid')
