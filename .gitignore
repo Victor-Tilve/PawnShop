@@ -22,3 +22,6 @@ Docs/01 - Documentos guías/Software existente/
 Docs/.~*.odt#
 Docs/.*_hidden*
 >>>>>>> 4b497b874b3360386905ec73d3badfac13804b92
+source/Backend/pyweb-app/pywebview.spec
+source/Backend/pyweb-app/build
+source/Backend/pyweb-app/dist
