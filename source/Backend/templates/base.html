@@ -53,7 +53,10 @@
       "
     >
       <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> -->
-      <img src="{% static 'images/login/p.png' %}" class="mr-md-auto float-left" alt="" height="70" />
+      <a class="mr-md-auto float-left" href="{% url 'home' %}">
+        <img src="{% static 'images/login/p.png' %}" alt="" height="70" />
+      </a>
+
       <nav class="my-2 my-md-0 mr-md-3 h3">
         <a class="p-2 text-dark" href="{% url 'home' %}">Home</a>
         <a class="p-2 text-dark" href="{% url 'clients-home' %}">Clientes</a>

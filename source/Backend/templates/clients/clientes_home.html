@@ -2,9 +2,22 @@
 <title>Add loan | Django site admin</title>
 {% endblock title %} {% block css %} {% endblock css %} {% block javascript %}
 {% endblock javascript %} {% block content %}
-<h2>Este es el Resumen de Clientes</h2>
-<a class="p-2 text-dark" href="{% url 'clients-crear' %}">Crear Clientes</a>
-<a class="p-2 text-dark" href="{% url 'clients-buscar' %}">Buscar Clientes</a>
+
+<div class="row float-left mt-1 ml-3 mb-1 mr-1">
+  <h2><strong>Resumen de Clientes</strong></h2>
+  </div>
+  <div class="row float-right mt-1 ml-3 mb-1 mr-1">
+  
+  <a class="p-2 text-dark" href="{% url 'clients-crear' %}">
+    <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
+  </a>
+  
+  <a class="p-2 text-dark" href="{% url 'clients-buscar' %}">
+    <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
+  </a>
+  
+</div>
+
 <table class="table">
   <thead>
     <tr class="h4 text-center">

@@ -1,10 +1,24 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
-<title>Add loan | Django site admin</title>
+<title>Agregar Un abono</title>
 {% endblock title %} {% block css %} {% endblock css %} {% block javascript %}
 {% endblock javascript %} {% block content %}
-<h2>Este es el Resumen de Clientes</h2>
-<a class="p-2 text-dark" href="{% url 'abonos-crear' %}">Crear Abono</a>
-<a class="p-2 text-dark" href="{% url 'abonos-buscar' %}">Buscar Abono</a>
+
+<div class="row float-left mt-1 ml-3 mb-1 mr-1">
+<h2><strong>Resumen de abonos</strong></h2>
+</div>
+<div class="row float-right mt-1 ml-3 mb-1 mr-1">
+
+<a class="p-2 text-dark" href="{% url 'abonos-crear' %}">
+  <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
+</a>
+
+<a class="p-2 text-dark" href="{% url 'abonos-buscar' %}">
+  <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
+</a>
+{% comment %} <img src="{% static 'images/base/icons8-add-64.png' %}" alt="" height="45"/> {% endcomment %}
+{% comment %} <a class="p-2 text-dark" href="{% url 'abonos-buscar' %}">Buscar Abono</a> {% endcomment %}
+</div>
+
 <table class="table">
   <thead>
     <tr class="h4 text-center">
