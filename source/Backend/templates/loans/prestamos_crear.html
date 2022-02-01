@@ -215,11 +215,11 @@
         <div class="col-1">
           <input
             type="number"
-            name="monto_a_pagar"
+            name="monto_adeudado"
             value="0"
             min="0"
             required=""
-            id="id_monto_a_pagar"
+            id="id_monto_adeudado"
             readonly
           />
           <script src="{% static 'js/loan/montoapagar.js' %}"></script>
@@ -268,14 +268,6 @@
         {% comment %} <input type="number" id="id_monto_adeudado" name="monto_adeudado" value=""  /> {% endcomment %}
       </div>
       
-      <div>
-        <input
-              type="hidden"
-              name="monto_adeudado"
-              value="0"
-              id="id_monto_adeudado"
-            />
-      </div>
     </fieldset>
     <div class="row float-left mt-3 ml-3">
       <button type="submit" class="btn btn-light ml-3 mr-3" name="save">
