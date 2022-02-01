@@ -30,7 +30,7 @@ class Loan(models.Model):
     date_created    = models.DateField()      
 
     num_cuotas      = models.PositiveIntegerField(validators=[MaxValueValidator(1000)],default=1)
-    monto_a_pagar   = models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)],default=0)
+
     deadline = models.DateField()
     status = models.BooleanField(default=1) #NOTE: Estado del Prestamo 1 = activo, 2 = Inactivo
     last_modification = models.DateField(default=datetime.date.today)
@@ -44,3 +44,5 @@ class Loan(models.Model):
     def __str__(self):
         return f"{self.cliente}: {self.monto_prestado} - {self.date_created}"
     
+    class Meta:
+        ordering = ('pk',)

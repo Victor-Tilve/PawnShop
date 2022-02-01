@@ -18,7 +18,6 @@ class LoanForm(ModelForm):
             'tipo_pago',
             'date_created',
             'num_cuotas',
-            'monto_a_pagar',
             'deadline',
             'creador', #new
             'monto_adeudado', #new
