@@ -26,13 +26,16 @@ def abono_create_view(request):
             # print(f"El abono es: {abono}")
             # adeudado = Loan.objects.filter(pk=id_prestamo)
             adeudado = list(Loan.objects.filter(pk=id_prestamo).values())[0]["monto_adeudado"]
-            print(f"Valor de deuda: {adeudado}")
-            print(f"tipo de dato: {type(adeudado)}")
+            # print(f"Valor de deuda: {adeudado}")
+            # print(f"tipo de dato: {type(adeudado)}")
             new_adeudado = int(adeudado) - int(abono)
             Loan.objects.filter(pk=id_prestamo).update(monto_adeudado=new_adeudado)
             # _adeudado = list(Loan.objects.filter(pk=id_prestamo).values())[0]["monto_adeudado"]
             # print(f"Valor del deuda a actualizar: {_adeudado}")
-        
+
+            #TODO: si el abono hace que el dinero pagado sea menor o igual a 0, desactivar prestamo
+            #TODO: Si el el unico prestamo que tenía activo, desactivar Cliente
+
             #----------
             form.save()
             return redirect('/abonos/')  # 4
@@ -120,11 +123,11 @@ def tabla_abono(request):
         abono_table = Abono.objects.values()
         for abonos in abono_table:
             cliente_id = list(Loan.objects.filter(pk=abonos["prestamo_id"]).values())[0]["cliente_id"]
-            monto_prestado = list(Loan.objects.filter(pk=abonos["prestamo_id"]).values())[0]["monto_prestado"]
+            monto_adeudado = list(Loan.objects.filter(pk=abonos["prestamo_id"]).values())[0]["monto_adeudado"]
             cliente_nombre = list(Client.objects.filter(pk=cliente_id).values())[0]["nombre"]
             cliente_apellido = list(Client.objects.filter(pk=cliente_id).values())[0]["apellido"]
             tables.append(
-                f'<tr><th scope="row">{cliente_id}</th><td>{cliente_nombre}</td><td>{abonos["id"]}</td><td>{monto_prestado}</td><td>{abonos["date_created"]}</td><td>{abonos["abono"]}</td></tr>'
+                f'<tr><th scope="row">{cliente_id}</th><td>{cliente_nombre} {cliente_apellido}</td><td>{abonos["id"]}</td><td>{monto_adeudado}</td><td>{abonos["date_created"]}</td><td>{abonos["abono"]}</td></tr>'
             )
         
         return JsonResponse({"_abonos_imformacion":tables}, status = 200)

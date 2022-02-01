@@ -181,28 +181,44 @@
                 <strong> <h5>Monto prestado:</h5> </strong>
               </label>
             </div>
-            <div class="col-2">
+            <div class="col-auto">
               <input
                 type="number"
-                name="monto_prestado"
+                name="monto_adeudado"
                 value="0"
                 min="0"
-                id="id_monto_prestado"
+                id="id_monto_adeudado"
                 readonly
               />
             </div>
-            <div class="col-1">
+            <div class="col-auto">
               <label class="required" for="id_interes">
                 <strong> <h5>Interes:</h5> </strong>
               </label>
             </div>
-            <div class="col-1">
+            <div class="col-auto">
               <input
                 type="number"
                 name="interes"
                 value="0"
                 step="any"
                 id="id_interes"
+                readonly
+              />
+            </div>
+            <div class="col-1">
+              <label class="required" for="id_num_cuotas">
+                <strong> <h5>Num cuotas:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-1">
+              <input
+                type="number"
+                name="num_cuotas"
+                value="1"
+                min="0"
+                required=""
+                id="id_num_cuotas"
                 readonly
               />
             </div>
@@ -237,39 +253,6 @@
                 class="vIntegerField"
                 min="0"
                 id="id_tipo_pago"
-                readonly
-              />
-            </div>
-          </div>
-          <div class="row ml-4 mt-4 mb-4 TotalPagar-NumCuotas">
-            <div class="col-1">
-              <label class="required" for="id_monto_a_pagar">
-                <strong> <h5>Monto a pagar:</h5> </strong>
-              </label>
-            </div>
-            <div class="col-2">
-              <input
-                type="number"
-                name="monto_a_pagar"
-                value="0"
-                min="0"
-                id="id_monto_a_pagar"
-                readonly
-              />
-            </div>
-            <div class="col-1">
-              <label class="required" for="id_num_cuotas">
-                <strong> <h5>Num cuotas:</h5> </strong>
-              </label>
-            </div>
-            <div class="col-1">
-              <input
-                type="number"
-                name="num_cuotas"
-                value="1"
-                min="0"
-                required=""
-                id="id_num_cuotas"
                 readonly
               />
             </div>

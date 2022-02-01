@@ -9,7 +9,7 @@
       success: function (response) {
         let prestamo_informacion = response["_prestamo_informacion"];
         let abono_informacion = response["_abono_informacion"];
-        // console.log(prestamo_informacion)
+      // console.log(prestamo_informacion)
 
         // hay momentos en los que ciertos clientes no tienen prestamos, al cambiar 
         // el valor a una linea con dash, se colocan los valores por defecto
@@ -18,7 +18,7 @@
           $("#id_fecha_ultimo_abono").val(abono_informacion[0]["date_created"])
           $("#id_date_created_prestamo").val(prestamo_informacion[0]["date_created"])
           $("#id_deadline").val(prestamo_informacion[0]["deadline"])
-          $("#id_monto_prestado").val(prestamo_informacion[0]["monto_prestado"])
+          $("#id_monto_adeudado").val(prestamo_informacion[0]["monto_adeudado"])
           $("#id_interes").val(prestamo_informacion[0]["interes"])
           $("#id_num_meses").val(prestamo_informacion[0]["num_meses"])
           $("#id_num_cuotas").val(prestamo_informacion[0]["num_cuotas"])
@@ -31,7 +31,7 @@
           $("#id_fecha_ultimo_abono").val("mm/dd/yyyy")
           $("#id_date_created_prestamo").val("mm/dd/yyyy")
           $("#id_deadline").val("mm/dd/yyyy")
-          $("#id_monto_prestado").val("0")
+          $("#id_monto_adeudado").val("0")
           $("#id_interes").val("0")
           $("#id_num_meses").val("1")
           $("#id_num_cuotas").val("1")
