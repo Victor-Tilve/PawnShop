@@ -8,4 +8,13 @@ from .models import Client
 class ClientForm(ModelForm):
     class Meta:
         model = Client
-        fields = '__all__'
+        fields = [
+            'nombre',
+            'apellido',
+            'cedula',
+            'telefono',
+            'direccion',
+            'direccion2',
+            'ref1',
+            'telefono_ref1',
+        ]
