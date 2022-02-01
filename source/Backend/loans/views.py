@@ -9,7 +9,7 @@ def loan_create_view(request):
     form = LoanForm()
 
     if request.method == 'POST':
-        # print(request.POST)
+        print(request.POST)
         form = LoanForm(request.POST)
         if form.is_valid():
             print('Is valid')
@@ -53,7 +53,7 @@ def tabla_prestamo(request):
             cliente_nombre = list(Client.objects.filter(pk=prestamo["cliente_id"]).values())[0]["nombre"]
             cliente_apellido = list(Client.objects.filter(pk=prestamo["cliente_id"]).values())[0]["apellido"]
             tables.append(
-                f'<tr><th scope="row">{prestamo["id"]}</th><td>{prestamo["monto_prestado"]}</td><td>{prestamo["monto_a_pagar"]}</td><td>{prestamo["num_meses"]}</td><td>{prestamo["cliente_id"]}</td><td>{cliente_nombre} {cliente_apellido}</td></tr>'
+                f'<tr><th scope="row">{prestamo["id"]}</th><td>{prestamo["monto_prestado"]}</td><td>{prestamo["monto_adeudado"]}</td><td>{prestamo["num_meses"]}</td><td>{prestamo["cliente_id"]}</td><td>{cliente_nombre} {cliente_apellido}</td></tr>'
             )
         
         return JsonResponse({"_prestamo_imformacion":tables}, status = 200)

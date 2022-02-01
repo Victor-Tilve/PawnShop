@@ -10,5 +10,6 @@ meses.addEventListener('input', updateValue_);
 
 function updateValue_(e) {
 //   monto_pagar.value = (monto.value) * (1 + interes.value/100);
-  monto_pagar.value = parseInt(monto.value) + parseInt(monto.value * interes.value/100 * meses.value) ;
+monto_pagar.value = parseInt(monto.value) + parseInt(monto.value * interes.value/100 * meses.value) ;
+document.getElementById('id_monto_adeudado').value = parseInt(monto_pagar.value);
 }

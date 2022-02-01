@@ -262,8 +262,21 @@
           <script src="{% static 'js/loan/dead_line.js' %}"></script>
         </div>
       </div>
+      
+      <div>
+        <input type="hidden" id="id_creador" name="creador" value ={{ user.pk }}  />
+        {% comment %} <input type="number" id="id_monto_adeudado" name="monto_adeudado" value=""  /> {% endcomment %}
+      </div>
+      
+      <div>
+        <input
+              type="hidden"
+              name="monto_adeudado"
+              value="0"
+              id="id_monto_adeudado"
+            />
+      </div>
     </fieldset>
-
     <div class="row float-left mt-3 ml-3">
       <button type="submit" class="btn btn-light ml-3 mr-3" name="save">
         <strong><h4>Guardar</h4></strong>
@@ -278,3 +291,4 @@
 {% endblock content %} {% block footer %}
 <div id="footer"></div>
 {% endblock footer %}
+

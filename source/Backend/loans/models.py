@@ -1,9 +1,12 @@
 from django.db import models
-from datetime import datetime, timedelta
+import datetime
+from datetime import timedelta
 # from django.core.validators import RegexValidator
 from django.core.validators import MinValueValidator,MaxValueValidator
-
 from clients.models import Client
+from django.conf import settings
+
+User = settings.AUTH_USER_MODEL
 
 def get_deadline(date_created:int,num_meses:int):
     return timedelta(date_created) + timedelta(30*int(num_meses))
@@ -26,13 +29,17 @@ class Loan(models.Model):
 
     date_created    = models.DateField()      
 
-    monto_a_pagar   = models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)],default=0)
     num_cuotas      = models.PositiveIntegerField(validators=[MaxValueValidator(1000)],default=1)
+    monto_a_pagar   = models.PositiveIntegerField(validators=[MaxValueValidator(1000000000)],default=0)
     deadline = models.DateField()
-    #TODO: Agregar -  Acotar el formulario al empezar a trabajar sobre esto para poder seguir trabajando como esta ahora
-        #-status
-        #-last modification
-        #-who created
+    status = models.BooleanField(default=1) #NOTE: Estado del Prestamo 1 = activo, 2 = Inactivo
+    last_modification = models.DateField(default=datetime.date.today)
+    creador = models.ForeignKey(User,
+                        null = True, 
+                        on_delete = models.SET_NULL
+                        )
+    monto_adeudado   = models.PositiveIntegerField(default=0)
+    
         
     def __str__(self):
         return f"{self.cliente}: {self.monto_prestado} - {self.date_created}"
