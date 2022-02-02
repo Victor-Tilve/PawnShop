@@ -1,9 +1,9 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Abono
+from .models import Adicional
 
 #TODO: Modificar
-class AbonoForm(ModelForm):
+class AdicionalForm(ModelForm):
     class Meta:
-        model = Abono
+        model = Adicional
         fields = "__all__"
