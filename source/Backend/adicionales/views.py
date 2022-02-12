@@ -29,7 +29,7 @@ def adicionales_create_view(request):
             adeudado = list(Loan.objects.filter(pk=id_prestamo).values())[0]["monto_adeudado"]
             print(f"Valor de deuda: {adeudado}")
             # print(f"tipo de dato: {type(adeudado)}")
-            new_adeudado = int(adeudado) - int(adicional)
+            new_adeudado = int(adeudado) + int(adicional)
             Loan.objects.filter(pk=id_prestamo).update(monto_adeudado=new_adeudado)
             _adeudado = list(Loan.objects.filter(pk=id_prestamo).values())[0]["monto_adeudado"]
             print(f"Valor del deuda a actualizar: {_adeudado}")
