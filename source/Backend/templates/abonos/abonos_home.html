@@ -1,8 +1,10 @@
-{% extends 'base.html' %} {% load static %} {% block title %}
+{% extends '_base.html' %} {% load static %} {% block title %}
 <title>Agregar Un abono</title>
 {% endblock title %} {% block css %} {% endblock css %} {% block javascript %}
 {% endblock javascript %} {% block content %}
 
+<canvas id="pieChart"></canvas>
+<script src="{% static 'js/abonos/mdb.js' %}"></script>
 <div class="row float-left mt-1 ml-3 mb-1 mr-1">
 <h2><strong>Resumen de abonos</strong></h2>
 </div>
@@ -19,6 +21,7 @@
 {% comment %} <a class="p-2 text-dark" href="{% url 'abonos-buscar' %}">Buscar Abono</a> {% endcomment %}
 </div>
 
+
 <table class="table">
   <thead>
     <tr class="h4 text-center">
@@ -34,4 +37,6 @@
   </tbody>
   </table>
   <script src="{% static 'js/abonos/tablas_abono.js' %}"></script>
+  
 {% endblock content %}
+

@@ -18,6 +18,11 @@
       crossorigin="anonymous"
     />
 
+    <link
+      rel="stylesheet"
+      href="{% static 'css/base.css' %}"
+    />
+
     <script
       {% comment %} src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" {% endcomment %}
       src="{% static 'js/bootstrap/popper.min.js' %}"
@@ -37,56 +42,24 @@
     {% endblock css %}
   </head>
 
-  <body>
-    <!-- Navbar -->
-    <div
-      class="
-        d-flex
-        flex-column flex-md-row
-        align-items-center
-        p-3
-        px-md-4
-        mb-3
-        bg-white
-        border-bottom
-        shadow-sm
-      "
-    >
-      <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> -->
-      <a class="mr-md-auto float-left" href="{% url 'home' %}">
-        <img src="{% static 'images/login/p.png' %}" alt="" height="70" />
-      </a>
-
-      <nav class="my-2 my-md-0 mr-md-3 h3">
-        <a class="p-2 text-dark" href="{% url 'home' %}">Home</a>
-        <a class="p-2 text-dark" href="{% url 'clients-home' %}">Clientes</a>
-        <a class="p-2 text-dark" href="{% url 'loans-home' %}">Préstamos</a>
-        <a class="p-2 text-dark" href="{% url 'abonos-home' %}">Abonos</a>
-        <a class="p-2 text-dark" href="{% url 'adicionales-home' %}">Adicionales</a>
-        <a class="p-2 text-dark" href="#">Corte Semanal</a>
-      </nav>
-      <div class="dropdown">
-        <button class="btn btn-lg dropdown-toggle bg-white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <a class="p-2 text-dark"> <strong>{{ user.username }}</strong></a>
-        <!-- <strong> {{ user.username }} </strong> -->
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-          <a class="dropdown-item" href="#">Configuración</a>
-        </div>
-      </div>
-    </div>
+  <body style="background-color: var(--background-color);">
 
     <!-- Navbar -->
-
-    <!-- END Header -->
+    {% block Navbar %}{% endblock Navbar %}
+    <!-- END Navbar -->
+    
+    <!-- Content -->
     {% block content %} {% endblock content %}
-
+    <!-- END Content -->
+    
     <!-- JavaScript -->
     {% block javascript %} {% endblock javascript %}
-
-    <!-- footer -->
-    {% block footer %} {% endblock footer %}
-    <!-- End footer -->
+    <!-- END JavaScript -->
+    
+    <!-- Footer -->
+    {% block footer %} {% endblock footer %}    
+    <!-- END Footer -->
   </body>
+
+
 </html>
