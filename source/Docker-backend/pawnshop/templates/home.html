@@ -1,0 +1,86 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}
+<title>Home</title>
+
+{% endblock title %}
+
+{% block css %} 
+{% endblock css %}
+
+{% block javascript %}
+{% endblock javascript %}
+
+
+
+{% block content %} 
+<div class="LHS_pane">
+    <div class="wrapper">
+        <div class="row m-3">
+            <button type="button" class="btn btn-light">
+                <h3><strong>Cobrar Hoy</strong></h3> 
+            </button>
+        </div>
+        <div class="row m-3">
+            <button type="button" class="btn btn-light">
+                <h3><strong>Vencidos</strong></h3> 
+            </button>
+        </div> 
+        <div class="row m-3">
+            <button type="button" class="btn btn-light">
+                <h3><strong>Totales</strong></h3>
+            </button>
+        </div> 
+    </div>
+</div>
+<div class="middle_image">
+    <div class="wrapper">
+        <img src="{% static 'images/Logo.png' %}"  alt=""/>    
+    </div>
+</div>
+<div class="RHS_pane ">
+    <div class="wrapper">
+        <div class="row m-3">
+            <button type="button" class="btn btn-light">
+                <h3><strong>Historicos eliminados</strong></h3>
+            </button>
+        </div>
+    </div>
+</div>
+{% comment %} #TODO: debo hacer las cards a mi manera y dejar de usar tanto Bootstrap {% endcomment %}
+<div class="dock row justify-content-md-center fixed-bottom">
+             
+    <div class="row m-3" style="width: 10rem;height:7rem;">
+        <button type="button" class="btn btn-light" onclick="location.href='{% url 'clients-home' %}'" >
+            <img src="{% static 'images/icons/people/color/boy.png' %}" class="mx-auto mt-3" alt="" width= "50" />
+            <h4><strong>Clientese</strong></h4>
+        </button>
+    </div> 
+    <div class="row m-3" style="width: 10rem;height:7rem;">
+        <button type="button" class="btn btn-light" onclick="location.href='{% url 'loans-home' %}'" >
+            <img src="{% static 'images/icons/money/Color/agreement.png' %}" class="mx-auto mt-3" alt="" width= "50" />
+            <h4><strong>Prestamos</strong></h4>
+        </button>
+    </div> 
+    <div class="row m-3" style="width: 10rem;height:7rem;">
+        <button type="button" class="btn btn-light" onclick="location.href='{% url 'adicionales-home' %}'" >
+            <img src="{% static 'images/icons/money/Color/wallet.png' %}" class="mx-auto mt-3" alt="" width= "50" />
+            <h4><strong>Adicionales</strong></h4>
+        </button>
+    </div> 
+    <div class="row m-3" style="width: 10rem;height:7rem;">
+        <button type="button" class="btn btn-light" onclick="location.href='{% url 'abonos-home' %}'" >
+            <img src="{% static 'images/icons/money/Color/piggybank.png' %}" class="mx-auto mt-3" alt="" width= "50" />
+            <h4><strong>Abonos</strong></h4>
+        </button>
+    </div> 
+</div>
+
+
+{% endblock content %}
+
+
+{% block Navbar %}
+{% endblock Navbar %}
+

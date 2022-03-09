@@ -1,0 +1,108 @@
+<!-- templates/_base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    {% block title %}
+    <title>Pawnshop</title>
+    {% endblock title %}
+    
+    <script src="{% static 'js/autocomplete/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'js/autocomplete/jquery-ui.js' %}"></script>
+    <link
+      rel="stylesheet"
+      {% comment %} href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" {% endcomment %}
+      href="{% static 'css/bootstrap/bootstrap.min.css' %}"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/base.css' %}"
+    />
+
+    <script
+      {% comment %} src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" {% endcomment %}
+      src="{% static 'js/bootstrap/popper.min.js' %}"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      {% comment %} src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" {% endcomment %}
+      src="{% static 'js/bootstrap/bootstrap.min.js' %}"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+
+    {% block css %} 
+    
+    {% endblock css %}
+  </head>
+
+  <body >
+
+    {% block Navbar %}
+    <!-- Navbar -->
+    <div
+    class="
+      d-flex
+      flex-column flex-md-row
+      align-items-center
+      p-3
+      px-md-4
+      mb-3
+      border-bottom
+      shadow-sm
+    "
+    style="background-color: var(--background-color);"
+    >
+    <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> -->
+    <a class="mr-md-auto float-left" href="{% url 'home' %}">
+      <img src="{% static 'images/login/Logo-Azul.png' %}" alt="" height="70" />
+    </a>
+    
+    <nav class="my-2 my-md-0 mr-md-3 h3 ">
+      <a class="p-2 text-dark" href="{% url 'clients-home' %}">Clientes</a>
+      <a class="p-2 text-dark" href="{% url 'loans-home' %}">Préstamos</a>
+      <a class="p-2 text-dark" href="{% url 'abonos-home' %}">Abonos</a>
+      <a class="p-2 text-dark" href="{% url 'adicionales-home' %}">Adicionales</a>
+      <a class="p-2 text-dark" href="#">Corte Semanal</a>
+    </nav>
+    <div class="dropdown">
+      <button 
+      class="btn btn-lg dropdown-toggle" 
+      type="button" data-toggle="dropdown" 
+      aria-haspopup="true" 
+      aria-expanded="false"
+      style="background-color: var(--background-color);"
+      >
+      <a class="p-2 text-dark"> 
+        <strong>{{ user.username }}</strong></a>
+      <!-- <strong> {{ user.username }} </strong> -->
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+        <a class="dropdown-item" href="#">Configuración</a>
+      </div>
+    </div>
+    </div>
+    <!-- Navbar -->
+    {% endblock Navbar %}
+
+    <!-- END Header -->
+    {% block content %} {% endblock content %}
+
+    <!-- JavaScript -->
+    {% block javascript %} {% endblock javascript %}
+
+    {% block footer %} 
+  
+
+    {% endblock footer %}    
+  </body>
+
+
+</html>

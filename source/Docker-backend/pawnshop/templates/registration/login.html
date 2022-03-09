@@ -1,0 +1,115 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      content="A fully featured admin theme which can be used to build CRM, CMS, etc."
+      name="description"
+    />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+
+    <!-- Icons css -->
+    
+
+    <!-- App css -->
+    <!-- build:css -->
+    <link href="{% static 'css/login/logincss.css' %}" rel="stylesheet" type="text/css" />
+    <link href= rel="stylesheet" type="text/css" />
+    <!-- endbuild -->
+  </head>
+
+  <body class="bg-account-pages">
+    <!-- Login -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="wrapper-page">
+              <div class="account-pages">
+                <div class="account-box">
+                  <!-- Logo box-->
+                  <div class="account-logo-box">
+                    <h2 class="text-uppercase text-center">
+                      <a href="index.html" class="text-success">
+                        <span><img src="{% static 'images/login/p.png' %}" alt="" height="70" /></span>
+                      </a>
+                    </h2>
+                  </div>
+
+                  <div class="account-content">
+                    <form method="POST">
+                      {% csrf_token %}
+                      <div class="form-group mb-3">
+                        <label for="emailaddress" class="font-weight-medium"
+                          >Usuario</label
+                        >
+                        <input
+                          class="form-control"
+                          type="input"
+                          class="form-control-username"
+                          name="username"
+                          id="inputEmail"
+                          placeholder="Username"
+                          required
+                        />
+                      </div>
+
+                      <div class="form-group mb-3">
+                        <label for="password" class="font-weight-medium"
+                          >Contraseña</label
+                        >
+                        <input
+                          class="form-control"
+                          type="password"
+                          class="form-control-password"
+                          name="password"
+                          id="inputPass"
+                          placeholder="Password"
+                          required
+                        />
+                      </div>
+
+                      <div class="form-group row text-center">
+                        <div class="col-12">
+                          <button
+                            class="
+                              btn btn-block btn-success
+                              waves-effect waves-light
+                            "
+                            type="submit"
+                          >
+                            Entrar
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- end form -->
+                  </div>
+                  <!-- end account-content -->
+                </div>
+                <!-- end account-box -->
+              </div>
+              <!-- end account-page-->
+            </div>
+            <!-- end wrapper-page -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end container -->
+    </section>
+    <!-- END HOME -->
+  </body>
+</html>

@@ -1,0 +1,203 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}
+<title>Clientes | Crear Clientes</title>
+{% endblock title %}
+   
+{% block css %} 
+<link href="{% static 'css/client/validation.css' %}" rel="stylesheet" type="text/css" />
+{% endblock css %}
+
+{% block content %} 
+  <!-- Content -->
+
+  <div id="content-main">
+    <form 
+    method="post" 
+    id="client_form" 
+    class="border border-secondary"
+    action=""
+    novalidate
+    >
+      {% csrf_token %}
+      <div>
+        <fieldset class="module aligned">
+          <legend>
+            <strong> Crear nuevo cliente</strong>
+          </legend>
+          <div class="row ml-4 mt-4 mb-4">
+            <div class="col-1">
+              <label class="required" for="id_nombre">Nombre:</label>
+            </div>
+            <div class="col-1">
+              <input
+              type="text"
+              name="nombre"
+              maxlength="200"
+              required
+              id="id_nombre"
+              placeholder = "Nombre del cliente"
+              spellcheck="false"
+              />
+            </div>
+          </div>
+
+          <div class="row ml-4 mt-4 mb-4">
+            <div class="col-1">
+              <label class="required" for="id_apellido">Apellido:</label>
+            </div>
+            <div class="col-1">
+              <input
+                type="text"
+                name="apellido"
+                maxlength="200"
+                required
+                id="id_apellido"
+                spellcheck="false"
+                placeholder = "Apellido del cliente"
+              />
+            </div>
+          </div>
+          
+          <div class="row ml-4 mt-4 mb-4">
+            <div class="col-1">
+              <label class="required" for="id_cedula">Cedula:</label>
+            </div>
+            <div class="col-4">
+              <input
+              type="text"
+              name="cedula"
+              id="id_cedula"
+              {% comment %} spellcheck="false"
+              data-ms-editor="true" {% endcomment %}
+              placeholder = "Número de 8 a 10 digitos"
+              minlength="8" 
+              maxlength="10"
+              pattern="\d{8,10}"
+              required
+              />
+              <span class="errorcedula" aria-live="polite"></span>
+            </div>
+            {% comment %} <div class="col-1" id="_id_cedula"><span class="errorcedula" aria-live="polite"></span></div> {% endcomment %}
+            <script src="{% static 'js/client/validation-cedula.js' %}"></script>
+          </div>
+          
+          <div class="row ml-4 mt-4 mb-4">
+            <div class="col-1">
+              <label class="required" for="id_telefono">Telefono:</label>
+            </div>
+            <div class="col-4">
+              <input
+              type="text"
+              name="telefono"
+              maxlength="10"
+              minlength="10"
+              required
+              id="id_telefono"
+              {% comment %} spellcheck="false"
+              data-ms-editor="true" {% endcomment %}
+              pattern="\d{10}"
+              placeholder = "Número de 10 digitos"
+              />
+              <span class="errorcelular" aria-live="polite"></span>
+            </div>
+            <script src="{% static 'js/client/validation-celular.js' %}"></script>
+          </div>
+          
+          <div class="row ml-4 mt-4 mb-4">
+            <div class="col-1">
+              <label class="required" for="id_direccion">Direccion:</label>
+            </div>
+            <div class="col-1">
+              <input
+              type="text"
+              name="direccion"
+              maxlength="200"
+              required
+              id="id_direccion"
+              placeholder = "Dirección vivienda del cliente"
+              spellcheck="false"
+              />
+            </div>
+          </div>
+          
+          <div class="row ml-4 mt-4 mb-4">
+            <div class="col-1">
+              <label class="required" for="id_direccion2">Direccion 2:</label>
+            </div>
+            <div class="col-1">
+              <input
+                type="text"
+                name="direccion2"
+                maxlength="200"
+                id="id_direccion2"
+                placeholder = "Dirección trabajo cliente"
+                spellcheck="false"
+                />
+            </div>
+          </div>
+          
+          <div class="row ml-4 mt-4 mb-4">
+            <div class="col-1">
+              <label class="required" for="id_ref1">Referencia 1:</label>
+            </div>
+            <div class="col-1">
+              <input
+                type="text"
+                name="ref1"
+                class="vTextField"
+                maxlength="200"
+                id="id_ref1"
+                spellcheck="false"
+                data-ms-editor="true"
+                placeholder = "Referencia del cliente"
+                />
+            </div>
+          </div>
+
+          <div class="row ml-4 mt-4 mb-4">
+            <div class="col-1">
+              <label class="required" for="id_telefono_ref1">Telefono referencia 1:</label>
+            </div>
+            <div class="col-4">
+              <input
+              type="text"
+              name="telefono_ref1"
+              maxlength="10"
+              minlenghht="10"
+              id="id_telefono_ref1"
+              placeholder = "Telefono de ref. cliente"
+              pattern="\d{8,10}"
+              spellcheck="false"
+              />
+              <span class="errorcelularref1" aria-live="polite"></span>
+            </div>
+            <script src="{% static 'js/client/validation-celular-ref1.js' %}"></script>
+          </div>
+
+        </fieldset>
+
+        <div class="row float-left mt-3">
+          <button type="submit" class="btn btn-light ml-3 mr-3" name="save">
+            <strong><h4>Guardar</h4></strong>
+          </button>
+          <button class="btn btn-light ml-3 mr-3">
+            <strong><h4><a href="{% url 'clients-home' %}" class="text-dark">Cancel</a></h4></strong>
+          </button>
+        </div>
+
+        </div>
+      </div>
+    </form>
+
+    
+  </div>
+
+
+  <!-- END Content -->
+{% endblock content %}
+
+{% block footer %} 
+<div id="footer"></div>
+{% endblock footer %}

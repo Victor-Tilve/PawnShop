@@ -21,3 +21,6 @@ source/Backend/pyweb-app/pywebview.spec
 source/Backend/pyweb-app/build
 source/Backend/pyweb-app/dist
 Docs/04 - Evidencia de Desarrollo/01-02-2022/*
+source/Docker-backend/nginx/*
+source/Docker-backend/postgres-backup.sql
+source/Docker-backend/postgres-backup2.sql

@@ -1,0 +1,286 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Add loan</title>
+
+<link
+  href="{% static 'css/autocomplete/jquery-ui.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+{% endblock title %}  {% block content %}
+<!-- Content -->
+<div id="content-main">
+  <form
+    method="post"
+    id="loan_form"
+    novalidate=""
+    class="border border-secondary"
+  >
+    {% csrf_token %}
+
+    <fieldset class="module aligned">
+      <legend class="ml-4">
+        <strong> Crear nuevo préstamo</strong>
+      </legend>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_pk">
+            <strong> <h5>ID:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input type="text" id="client-id" name="cliente" />
+          <script>
+            $(function () {
+              var availableTags = [
+                {% for cliente in clientes %}
+                {
+                  nombre: "{{cliente.nombre}}",
+                  label: "{{cliente.pk}}",
+                  last_name: "{{cliente.apellido}}",
+                },
+                {% endfor %}
+                // "{{cliente.pk}} {{cliente.nombre}} {{cliente.apellido}}",
+                // "{{cliente.nombre}}",
+              ];
+              $("#client-id")
+                .autocomplete({
+                  minLength: 0,
+                  source: availableTags,
+                  focus: function (event, ui) {
+                    $("#client-id").val(ui.item.label);
+                    return false;
+                  },
+                  select: function (event, ui) {
+                    $("#cliente-name").val(ui.item.nombre + " " + ui.item.last_name);
+                    $("#client-id").val(ui.item.label);
+                    return false;
+                  },
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+                return $("<li>")
+                  .append(
+                    "<div>" +
+                      item.label +
+                      " " +
+                      item.nombre +
+                      " " +
+                      item.last_name +
+                      "</div>"
+                  )
+                  .appendTo(ul);
+              };
+            });
+          </script>
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_cliente">
+            <strong> <h5>Cliente:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input type="text" id="cliente-name" />
+          <!-- <input type="hidden" id="client-id" name="cliente"> -->
+          <script>
+            $( function() {
+                  var availableTags = [
+                  {% for cliente in clientes %}
+                  {
+                    value: "{{cliente.pk}}",
+                    label: "{{cliente.nombre}}",
+                    last_name: "{{cliente.apellido}}",
+                  },
+                  {% endfor %}
+                  // "{{cliente.pk}} {{cliente.nombre}} {{cliente.apellido}}",
+                  // "{{cliente.nombre}}",
+                  ];
+                  $( "#cliente-name" ).autocomplete({
+                                                  minLength: 1,
+                                                  source: availableTags,
+                                                  focus: function( event, ui ) {
+                                                    $( "#cliente-name" ).val( ui.item.value + ' ' + ui.item.label + ' ' + ui.item.last_name );
+                                                    return false;
+                                                  },
+                                                  select: function( event, ui ) {
+                                                                                  $( "#cliente-name" ).val( ui.item.label + ' ' + ui.item.last_name );
+                                                                                  $( "#client-id" ).val( ui.item.value );
+                                                                                  return false;
+                                                                                }
+                                                })
+                  .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                  return $( "<li>" )
+                    .append( "<div>" + item.value + " " + item.label + " " + item.last_name + "</div>" )
+                    .appendTo( ul );
+                    };
+              } );
+          </script>
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_monto_prestado">
+            <strong> <h5>Fecha de prestamo:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input
+            type="date"
+            name="date_created"
+            value="0"
+            min="0"
+            required=""
+            id="id_date_created"
+          />
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_monto_prestado">
+            <strong> <h5>Monto prestado:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input
+            type="number"
+            name="monto_prestado"
+            value="0"
+            min="0"
+            required=""
+            id="id_monto_prestado"
+          />
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_interes">
+            <strong> <h5>Interes:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input
+            type="number"
+            name="interes"
+            value="0"
+            step="any"
+            required=""
+            id="id_interes"
+          />
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_num_meses">
+            <strong> <h5>Num meses:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input
+            type="number"
+            name="num_meses"
+            value="1"
+            class="vIntegerField"
+            min="0"
+            required=""
+            id="id_num_meses"
+          />
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_tipo_pago">
+            <strong> <h5>Tipo pago:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <select
+            name="tipo_pago"
+            required=""
+            id="id_tipo_pago"
+            onchange="NumCuotas(event)"
+          >
+            <option value="" selected="">---------</option>
+            {% for tipo_pago in tipo_pagos %}
+            <option value="{{tipo_pago.pk}}">{{tipo_pago.tipo}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_monto_a_pagar">
+            <strong> <h5>Monto a pagar:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input
+            type="number"
+            name="monto_adeudado"
+            value="0"
+            min="0"
+            required=""
+            id="id_monto_adeudado"
+            readonly
+          />
+          <script src="{% static 'js/loan/montoapagar.js' %}"></script>
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_num_cuotas">
+            <strong> <h5>Num cuotas:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input
+            type="number"
+            name="num_cuotas"
+            value="1"
+            min="0"
+            required=""
+            id="id_num_cuotas"
+          />
+          <script src="{% static 'js/loan/numeroCuotas.js' %}"></script>
+        </div>
+      </div>
+      <div class="row ml-4 mt-4 mb-4">
+        <div class="col-1">
+          <label class="required" for="id_deadline">
+            <strong> <h5>Deadline:</h5> </strong>
+          </label>
+        </div>
+        <div class="col-1">
+          <input
+            type="date"
+            name="deadline"
+            size="10"
+            required=""
+            id="id_deadline"
+            spellcheck="false"
+            data-ms-editor="true"
+          />
+          <script src="{% static 'js/loan/dead_line.js' %}"></script>
+        </div>
+      </div>
+      
+      <div>
+        <input type="hidden" id="id_creador" name="creador" value ={{ user.pk }}  />
+        {% comment %} <input type="number" id="id_monto_adeudado" name="monto_adeudado" value=""  /> {% endcomment %}
+      </div>
+      
+    </fieldset>
+    <div class="row float-left mt-3 ml-3">
+      <button type="submit" class="btn btn-light ml-3 mr-3" name="save">
+        <strong><h4>Guardar</h4></strong>
+      </button>
+      <button class="btn btn-light ml-3 mr-3">
+        <strong><h4><a href="{% url 'loans-home' %}" class="text-dark">Cancel</a></h4></strong>
+      </button>
+    </div>
+  </form>
+</div>
+<!-- END Content -->
+{% endblock content %} {% block footer %}
+<div id="footer"></div>
+{% endblock footer %}
+

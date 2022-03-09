@@ -1,0 +1,39 @@
+{% extends '_base.html' %} {% load static %} {% block title %}
+<title>Agregar Un abono</title>
+{% endblock title %} {% block css %} {% endblock css %} {% block javascript %}
+{% endblock javascript %} 
+{% block content %}
+
+
+<div class="row float-left mt-1 ml-3 mb-1 mr-1 bg-light">
+<h2><strong>Resumen de adicionales</strong></h2>
+</div>
+<div class="row float-right mt-1 ml-3 mb-1 mr-1">
+
+<a class="p-2 text-dark" href="{% url 'adicionales-crear' %}">
+  <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
+</a>
+
+<a class="p-2 text-dark" href="{% url 'adicionales-buscar' %}">
+  <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
+</a>
+{% comment %} <img src="{% static 'images/base/icons8-add-64.png' %}" alt="" height="45"/> {% endcomment %}
+{% comment %} <a class="p-2 text-dark" href="{% url 'adicionales-buscar' %}">Buscar Abono</a> {% endcomment %}
+</div>
+
+<table class="table">
+  <thead>
+    <tr class="h4 text-center">
+      <th scope="col">ID Cliente</th>
+      <th scope="col">Nombre cliente</th>
+      <th scope="col">Codigo de Adicional</th>
+      <th scope="col">Monto Adeudado</th>
+      <th scope="col">Fecha de Adicional</th>
+      <th scope="col">Monto Adicionado</th>
+    </tr>
+  </thead>
+  <tbody id="id_tabla_prestamo" class="h4 text-center">
+  </tbody>
+  </table>
+  <script src="{% static 'js/adicionales/tablas_adicionales.js' %}"></script>
+{% endblock content %}

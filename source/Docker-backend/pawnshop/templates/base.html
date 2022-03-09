@@ -1,0 +1,65 @@
+<!-- templates/_base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    {% block title %}
+    <title>Pawnshop</title>
+    {% endblock title %}
+    
+    <script src="{% static 'js/autocomplete/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'js/autocomplete/jquery-ui.js' %}"></script>
+    <link
+      rel="stylesheet"
+      {% comment %} href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" {% endcomment %}
+      href="{% static 'css/bootstrap/bootstrap.min.css' %}"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/base.css' %}"
+    />
+
+    <script
+      {% comment %} src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" {% endcomment %}
+      src="{% static 'js/bootstrap/popper.min.js' %}"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      {% comment %} src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" {% endcomment %}
+      src="{% static 'js/bootstrap/bootstrap.min.js' %}"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+
+    {% block css %} 
+    
+    {% endblock css %}
+  </head>
+
+  <body style="background-color: var(--background-color);">
+
+    <!-- Navbar -->
+    {% block Navbar %}{% endblock Navbar %}
+    <!-- END Navbar -->
+    
+    <!-- Content -->
+    {% block content %} {% endblock content %}
+    <!-- END Content -->
+    
+    <!-- JavaScript -->
+    {% block javascript %} {% endblock javascript %}
+    <!-- END JavaScript -->
+    
+    <!-- Footer -->
+    {% block footer %} {% endblock footer %}    
+    <!-- END Footer -->
+  </body>
+
+
+</html>

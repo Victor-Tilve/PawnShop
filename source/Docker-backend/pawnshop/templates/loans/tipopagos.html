@@ -1,0 +1,48 @@
+{% extends '_base.html' %}
+{%load static%}
+
+{% block css %}
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock css %}
+
+{% block title %}
+<title>
+Home
+</title>
+{% endblock %} 
+
+{% block header%} 
+{% if user.is_authenticated %} 
+Hi {{ user.username }}!
+<p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">login</a> |<a href="{% url 'signup' %}">signup</a>
+{% endif %} {% endblock %}
+
+{% block content %} 
+<h3>Tipo pago Form</h3>
+<hr />
+
+<form action="" method="POST">
+  {% csrf_token %} 
+
+  <div class="form-row field-tipo_pago">
+    <div>
+      <label class="required" for="id_tipo_de_pago">Tipo de pago:</label>
+
+      <div class="related-widget-wrapper">
+        <select name="tipo_de_pago" required="" id="id_tipo_pago">
+            <option value="" selected="">---------</option>
+            {% for object in objects %}
+            <option value="{{object.pk}}">{{object.tipo}}</option>
+            {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <input type="submit" />
+</form>
+{% endblock content %}

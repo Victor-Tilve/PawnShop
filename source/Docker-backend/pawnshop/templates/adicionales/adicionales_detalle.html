@@ -1,0 +1,226 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}
+<title>Detalle Prestamos | Zulumar</title>
+
+<link
+  href="{% static 'css/autocomplete/jquery-ui.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+{% endblock title %}
+   
+{% block css %} 
+<link href="{% static 'css/client/validation.css' %}" rel="stylesheet" type="text/css" />
+{% endblock css %}
+
+{% block javascript %}
+<script src="{% static 'js/abonos/detalle_prestamo_y_cliente.js' %}"></script>
+{% endblock javascript %} 
+
+
+
+{% block content %}
+{% comment %} <h1>Detalles de prestamo {{object.pk}}</h1> {% endcomment %}
+
+<div>
+  <fieldset class="module aligned">
+    <legend>
+      <strong> Detalle de Préstamo</strong>
+    </legend>
+    <div class="row ml-4 mt-4 mb-4 ID-Cliente">
+      <div class="col-auto">
+        <label class="required" for="id_pk">
+          <h5><strong>ID Cliente:</strong></h5>
+        </label>
+      </div>
+      <div class="col-auto pl-0 pr-5">
+        <h5 id="id_client_id" name="cliente_id"> </h5>
+      </div>
+      <div class="col-auto">
+        <label class="required" for="id_cliente">
+          <h5> <strong> Nombre Completo:</strong></h5> 
+        </label>
+      </div>
+      <div class="col-auto pr-5 pl-0">
+        <h5 id="id_nombre_client" name="nombre_client"> </h5>
+      </div>
+
+      <div class="col-auto">
+        <label class="required" for="id_prestamo">
+          <h5><strong>Codigo Prestamo:</strong></h5>
+        </label>
+      </div>
+      <div class="col-auto pr-5 pl-0">
+        <h5 id="id_codigo_prestamo" name="codigo_prestamo">{{object.pk}}</h5>
+      </div>
+    </div>
+    <div class="row ml-4 mt-4 mb-4 Prestamo-Fecha">
+      <div class="col-auto">
+        <label class="required" for="id_fecha_prestamo">
+          <h5><strong>Fecha de prestamo:</strong></h5>
+        </label>
+      </div>
+      <div class="col-auto pr-5 pl-0">
+        <h5 id="id_fecha_prestamo" name="fecha_prestamo"> </h5>
+      </div>
+      <div class="col-auto">
+        <label class="required" for="id_deadline">
+          <h5><strong>Fecha Límite:</strong></h5>
+        </label>
+      </div>
+      <div class="col-auto pr-5 pl-0">
+        <h5 id="id_deadline" name="deadline"> </h5>
+      </div>
+      <div class="col-auto">
+        <label class="required" for="id_num_meses">
+          <h5><strong>Num meses:</strong></h5>
+        </label>
+      </div>
+      <div class="col-auto pr-5 pl-0">
+        <h5 id="id_num_meses" name="deadline"> </h5>
+      </div>
+    </div>
+    <div class="row ml-4 mt-4 mb-4 MontoEInteres">
+      <div class="col-1">
+        <label class="required" for="id_monto_prestado">
+          <h5><strong>Monto prestado:</strong></h5>
+        </label>
+      </div>
+      <div class="col-auto">
+        <input
+          type="number"
+          name="monto_prestado"
+          value="0"
+          min="0"
+          id="id_monto_prestado"
+          readonly
+        />
+      </div>
+      <div class="col-1">
+        <label class="required" for="id_interes">
+          <h5><strong>Interes:</strong></h5>
+        </label>
+      </div>
+      <div class="col-1">
+        <input
+          type="number"
+          name="interes"
+          value="0"
+          step="any"
+          id="id_interes"
+          readonly
+        />
+      </div>
+    </div>
+    <div class="row ml-4 mt-4 mb-4 NumMeses-TipoDePago-">
+      <div class="col-1">
+        <label class="required" for="id_tipo_pago">
+          <h5><strong>Tipo pago:</strong></h5> 
+        </label>
+      </div>
+      <div class="col-1">
+        <input
+          type="text"
+          name="tipo_pago"
+          value=""
+          class="vIntegerField"
+          min="0"
+          id="id_tipo_pago"
+          readonly
+        />
+      </div>
+    </div>
+    <div class="row ml-4 mt-4 mb-4 TotalPagar-NumCuotas">
+      <div class="col-1">
+        <label class="required" for="id_monto_a_pagar">
+          <h5><strong>Monto a pagar:</strong></h5>
+        </label>
+      </div>
+      <div class="col-2">
+        <input
+          type="number"
+          name="monto_a_pagar"
+          value="0"
+          min="0"
+          id="id_monto_a_pagar"
+          readonly
+        />
+      </div>
+      <div class="col-1">
+        <label class="required" for="id_num_cuotas">
+          <h5><strong>Num cuotas:</strong></h5>
+        </label>
+      </div>
+      <div class="col-1">
+        <input
+          type="number"
+          name="num_cuotas"
+          value="1"
+          min="0"
+          required=""
+          id="id_num_cuotas"
+          readonly
+        />
+      </div>
+    </div>
+    <div class="row ml-4 mt-4 mb-4 FechaUltimoAbono">
+      <div class="col-1">
+        <label class="required" for="id_monto_a_pagar">
+          <h5><strong>Fecha Ultimo Abono:</strong></h5> 
+        </label>
+      </div>
+      <div class="col-2">
+        <input
+          type="number"
+          name="ultimo_abono"
+          value="0"
+          min="0"
+          required=""
+          id="id_ultimo_abono"
+          readonly
+        />
+      </div>
+    </div>
+    <div class="row ml-4 mt-4 mb-4 AbonoAPagar">
+      <div class="col-1">
+        <label class="required" for="id_Abono_a_pagar">
+          <h5><strong>Abono:</strong></h5>
+        </label>
+      </div>
+      <div class="col-1">
+        <input
+          type="number"
+          name="abono"
+          value="0"
+          min="0"
+          required=""
+          id="id_abono_a_pagar"
+          readonly
+        />
+      </div>
+    </div>
+    <div class="row ml-4 mt-4 mb-4 FechaAbono">
+      <div class="col-auto">
+        <label class="required" for="id_fechaAbono">
+          <h5><strong>Fechca de abono:</strong></h5>
+        </label>
+      </div>
+      <div class="col-1">
+        <input
+          type="date"
+          name="date_created"
+          size="10"
+          required=""
+          id="id_fechaAbono"
+          spellcheck="false"
+          data-ms-editor="true"
+          readonly
+        />
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+{% endblock content %}

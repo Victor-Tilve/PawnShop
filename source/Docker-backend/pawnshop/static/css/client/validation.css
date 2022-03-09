@@ -1,0 +1,13 @@
+input:invalid {
+    /* border: 2px dashed rgba(242, 121, 65, 0.1); */
+    border: 2px solid black;
+  }
+  
+  input:invalid:required {
+    /* background-image: linear-gradient(to right, pink, lightgreen); */
+    background-color: rgba(242, 121, 65, 0.05);
+  }
+  
+  input:valid {
+    border: 2px solid black;
+  }

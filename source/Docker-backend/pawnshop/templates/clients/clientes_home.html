@@ -1,0 +1,45 @@
+{% extends '_base.html' %} {% load static %} {% block title %}
+<title>Add loan | Django site admin</title>
+{% endblock title %} {% block css %} {% endblock css %} {% block javascript %}
+{% endblock javascript %} 
+
+
+
+{% block content %}
+
+<div class="row float-left mt-1 ml-3 mb-1 mr-1">
+  <h2><strong>Resumen de Clientes</strong></h2>
+  </div>
+  <div class="row float-right mt-1 ml-3 mb-1 mr-1">
+  
+  <a class="p-2 text-dark" href="{% url 'clients-crear' %}">
+    <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
+  </a>
+  
+  <a class="p-2 text-dark" href="{% url 'clients-buscar' %}">
+    <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
+  </a>
+  
+</div>
+
+<table class="table">
+  <thead>
+    <tr class="h4 text-center">
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Cédula</th>
+    </tr>
+  </thead>
+  <tbody id="id_tabla_clients" class="h4 text-center">
+  {% for cliente in clientes %}
+  <tr>
+    <th scope="row">{{cliente.pk}}</th>
+    <td>{{cliente.nombre}}</td>
+    <td>{{cliente.apellido}}</td>
+    <td>{{cliente.cedula}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

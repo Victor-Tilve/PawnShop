@@ -1,0 +1,352 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}
+<title>Abonos | Crear Abonos</title>
+
+<link
+  href="{% static 'css/autocomplete/jquery-ui.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+{% endblock title %}
+   
+{% block css %} 
+<link href="{% static 'css/client/validation.css' %}" rel="stylesheet" type="text/css" />
+{% endblock css %}
+
+{% block content %} 
+  <!-- Content -->
+
+  <div id="content-main">
+    <form 
+    method="post" 
+    id="abono_form" 
+    class="border border-secondary"
+    action=""
+    novalidate
+    >
+      {% csrf_token %}
+      <div>
+        <fieldset class="module aligned">
+          <legend>
+            <strong> Crear nuevo abono</strong>
+          </legend>
+          <div class="row ml-4 mt-4 mb-4 ID-Cliente">
+            <div class="col-1">
+              <label class="required" for="id_pk">
+                <strong> <h5>ID:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-2">
+              <input type="text" id="client-id" name="cliente" required=""/>
+              <script>
+                $(function () {
+                  var availableTags = [
+                    {% for cliente in clientes %}
+                    {
+                      nombre: "{{cliente.nombre}}",
+                      label: "{{cliente.pk}}",
+                      last_name: "{{cliente.apellido}}",
+                    },
+                    {% endfor %}
+                    // "{{cliente.pk}} {{cliente.nombre}} {{cliente.apellido}}",
+                    // "{{cliente.nombre}}",
+                  ];
+                  $("#client-id")
+                    .autocomplete({
+                      minLength: 0,
+                      source: availableTags,
+                      focus: function (event, ui) {
+                        $("#cliente-name").val(ui.item.nombre + " " + ui.item.last_name);
+                        $("#client-id").val(ui.item.label);
+                        return false;
+                      },
+                      select: function (event, ui) {
+                        $("#cliente-name").val(ui.item.nombre + " " + ui.item.last_name);
+                        $("#client-id").val(ui.item.label);
+                        return false;
+                      },
+                    })
+                    .autocomplete("instance")._renderItem = function (ul, item) {
+                    return $("<li>")
+                      .append(
+                        "<div>" +
+                          item.label +
+                          " " +
+                          item.nombre +
+                          " " +
+                          item.last_name +
+                          "</div>"
+                      )
+                      .appendTo(ul);
+                  };
+                });
+              </script>
+            </div>
+            <div class="col-1">
+              <label class="required" for="id_cliente">
+                <strong> <h5>Cliente:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-1">
+              <input type="text" id="cliente-name" required=""/>
+              <!-- <input type="hidden" id="client-id" name="cliente"> -->
+              <script>
+                $( function() {
+                      var availableTags = [
+                      {% for cliente in clientes %}
+                      {
+                        value: "{{cliente.pk}}",
+                        label: "{{cliente.nombre}}",
+                        last_name: "{{cliente.apellido}}",
+                      },
+                      {% endfor %}
+                      // "{{cliente.pk}} {{cliente.nombre}} {{cliente.apellido}}",
+                      // "{{cliente.nombre}}",
+                      ];
+                      $( "#cliente-name" ).autocomplete({
+                                                      minLength: 1,
+                                                      source: availableTags,
+                                                      focus: function( event, ui ) {
+                                                        $( "#cliente-name" ).val( ui.item.value + ' ' + ui.item.label + ' ' + ui.item.last_name );
+                                                        return false;
+                                                      },
+                                                      select: function( event, ui ) {
+                                                                                      $( "#cliente-name" ).val( ui.item.label + ' ' + ui.item.last_name );
+                                                                                      $( "#client-id" ).val( ui.item.value ).trigger("change");
+                                                                                      return false;
+                                                                                    }
+                                                    })
+                      .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                      return $( "<li>" )
+                        .append( "<div>" + item.value + " " + item.label + " " + item.last_name + "</div>" )
+                        .appendTo( ul );
+                        };
+                  } );
+              </script>
+            </div>
+          </div>
+          <div class="row ml-4 mt-4 mb-4 Prestamo-Fecha">
+            <div class="col-1">
+              <label class="required" for="id_prestamo">
+                <strong> <h5>Codigo Prestamo:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-1">
+              <select
+                type="number"
+                name="prestamo"
+                required
+                id="id_codigo_prestamo"
+              />
+                <option value="" selected="">---------</option>
+              </select>
+            </div>
+            <div class="col-d-xl-flex">
+              <label class="required" for="id_fecha_prestamo">
+                <strong> <h5>Fecha de prestamo:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-2">
+              <input
+                type="date"
+                name="date_created_prestamo"
+                value="0"
+                min="0"
+                id="id_date_created_prestamo"
+                readonly
+              />
+            </div>
+            <div class="col-d-xl-flex">
+              <label class="required" for="id_deadline">
+                <strong> <h5>Deadline:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-1">
+              <input
+                type="date"
+                name="deadline"
+                size="10"
+                id="id_deadline"
+                spellcheck="false"
+                data-ms-editor="true"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="row ml-4 mt-4 mb-4 MontoEInteres">
+            <div class="col-1">
+              <label class="required" for="id_monto_prestado">
+                <strong> <h5>Monto prestado:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="number"
+                name="monto_adeudado"
+                value="0"
+                min="0"
+                id="id_monto_adeudado"
+                readonly
+              />
+            </div>
+            <div class="col-auto">
+              <label class="required" for="id_interes">
+                <strong> <h5>Interes:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="number"
+                name="interes"
+                value="0"
+                step="any"
+                id="id_interes"
+                readonly
+              />
+            </div>
+            <div class="col-1">
+              <label class="required" for="id_num_cuotas">
+                <strong> <h5>Num cuotas:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-1">
+              <input
+                type="number"
+                name="num_cuotas"
+                value="1"
+                min="0"
+                required=""
+                id="id_num_cuotas"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="row ml-4 mt-4 mb-4 NumMeses-TipoDePago-">
+            <div class="col-1">
+              <label class="required" for="id_num_meses">
+                <strong> <h5>Num meses:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-2">
+              <input
+                type="number"
+                name="num_meses"
+                value="1"
+                class="vIntegerField"
+                min="0"
+                id="id_num_meses"
+                readonly
+              />
+            </div>
+            <div class="col-1">
+              <label class="required" for="id_tipo_pago">
+                <strong> <h5>Tipo pago:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-1">
+              <input
+                type="text"
+                name="tipo_pago"
+                value=""
+                class="vIntegerField"
+                min="0"
+                id="id_tipo_pago"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="row ml-4 mt-4 mb-4 FechaUltimoAbono">
+            <div class="col-1">
+              <label class="required" for="id_Abono_a_pagar">
+                <strong> <h5>Último Abono:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-2">
+              <input
+                type="number"
+                name="ultimo_abono"
+                value="0"
+                min="0"
+                required=""
+                id="id_ultimo_abono"
+                readonly
+              />
+            </div>
+            <div class="col-1">
+              <label class="required" for="id_monto_a_pagar">
+                <strong> <h5>Fecha Último Abono:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-2">
+              <input
+                type="date"
+                name="fecha_ultimo_abono"
+                value="0"
+                min="0"
+                required=""
+                id="id_fecha_ultimo_abono"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="row ml-4 mt-4 mb-4 AbonoAPagar">
+            <div class="col-1">
+              <label class="required" for="id_Abono_a_pagar">
+                <strong> <h5>Abono Actual:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-2">
+              <input
+                type="number"
+                name="abono"
+                value="0"
+                min="0"
+                required=""
+                id="id_abono_a_pagar"
+              />
+            </div>
+            <div class="col-1">
+              <label class="required" for="id_fechaAbono">
+                <strong> <h5>Fechca de abono:</h5> </strong>
+              </label>
+            </div>
+            <div class="col-1">
+              <input
+                type="date"
+                name="date_created"
+                size="10"
+                required=""
+                id="id_fechaAbono"
+                spellcheck="false"
+                data-ms-editor="true"
+              />
+            </div>
+          </div>
+          
+        </fieldset>
+
+        <div class="row float-left mt-3 ml-3">
+          <button type="submit" class="btn btn-light ml-3 mr-3 text-dark" name="save">
+            <a><strong><h4>Guardar</h4></strong></a>
+          </button>
+          <button class="btn btn-light ml-3 mr-3">
+            <strong><h4><a href="{% url 'abonos-home' %}" class="text-dark">Cancel</a></h4></strong>
+          </button>
+        </div>
+
+        </div>
+      </div>
+    </form>
+    <script src="{% static 'js/abonos/IDs_prestamos.js' %}"></script>
+    <script src="{% static 'js/abonos/informacion_prestamo.js' %}"></script>
+     
+  </div>
+
+  <!-- END Content -->
+{% endblock content %}
+
+{% block footer %} 
+<div id="footer"></div>
+{% endblock footer %}

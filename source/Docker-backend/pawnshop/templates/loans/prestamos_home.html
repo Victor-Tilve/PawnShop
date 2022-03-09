@@ -1,0 +1,36 @@
+{% extends '_base.html' %} {% load static %} {% block title %}
+<title>Préstamos | Home</title>
+{% endblock title %} 
+
+
+{% block content %}
+<div class="row float-left mt-1 ml-3 mb-1 mr-1">
+  <h2><strong>Resumen de Prestamos</strong></h2>
+</div>
+  
+<div class="row float-right mt-1 ml-3 mb-1 mr-1">
+  <a class="p-2 text-dark" href="{% url 'loans-crear' %}">
+    <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
+  </a>
+  
+  <a class="p-2 text-dark" href="{% url 'loans-buscar' %}">
+    <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
+  </a>
+</div>
+
+<table class="table">
+  <thead>
+    <tr class="h4 text-center">
+      <th scope="col">Codigo prestamo</th>
+      <th scope="col">Monto prestado</th>
+      <th scope="col">Monto adeudado</th>
+      <th scope="col">Numero de meses</th>
+      <th scope="col">ID Cliente</th>
+      <th scope="col">Nombre cliente</th>
+    </tr>
+  </thead>
+  <tbody id="id_tabla_prestamo" class="h4 text-center">
+  </tbody>
+</table>
+<script src="{% static 'js/loan/tabla_loan.js' %}"></script>
+{% endblock content %}

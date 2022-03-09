@@ -1,0 +1,196 @@
+:root {
+  --background-color:#469CF6;
+  --LHS-stat-height: 12mm;
+  --dock-height: 20mm;
+}
+
+html, body {
+    min-height: 100%;
+    /* background-color: var(--background-color); */
+}
+  .home_content {
+    height: 100%;
+    width: 100%;
+  }
+
+  /****************** Dock ************************** */
+
+/* Extending the root variables */
+
+:root {
+  --dock-height: 15mm;
+}
+
+.dock {
+  width: 70%;
+  height: 20%;
+  background-color: var(--background-color);
+  /* position: relative;
+  top: 50%;*/
+  left: 15%; 
+  /* transform: translate(-50%, -50%); */
+  /* overflow: hidden; */
+}
+
+/****************** Middle section ************************** */
+:root {
+  --middle_image_width:150mm;
+  --middle_image_height:74mm;
+  --middle_shadow_width:220mm;
+  --middle_shadow_height:60mm;
+
+}
+
+.middle_image {
+  width: 70%;
+  height: 80%;
+
+  /* top: 50%; */
+  /* left: 15%;  */
+  /* transform: translate(-50%, -50%); */
+  /* overflow: hidden; */
+}
+.middle_image .wrapper{
+  position: absolute;
+  left: 50%; 
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/****************** Hand sides section ************************** */
+:root {
+  --LHS-stat-1-height: 20mm;
+  --LHS-stat-height: 12mm;
+  --LHS-height:150mm;
+  --HS-width:25%;
+  --LHS-stat-height:15mm;
+}
+
+
+.RHS_pane {
+  width: var(--HS-width);
+  height: 100%;
+  top: 0%;
+  right: 0mm;
+  margin: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.LHS_pane {
+  width: var(--HS-width);
+  height: 100%;
+  position: absolute;
+  top: 0mm;
+  left: 0mm;
+}
+.LHS_pane .wrapper,.RHS_pane .wrapper{
+  position: absolute;
+  height: auto;
+  width: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/* .LHS_stat_1,.LHS_stat_2,.LHS_stat_3,.LHS_stat_4,.LHS_stat_5 {
+  width: var(--HS-width);
+  height: var(--LHS-stat-height);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: var(--LHS-stat-1-height);
+  left: 7mm;
+  overflow: hidden;
+}
+
+.LHS_stat_1 {
+  top: var(--LHS-stat-1-height);
+}
+.LHS_stat_2 {
+  top: calc(var(--LHS-stat-height) + var(--LHS-stat-1-height));
+}
+
+.LHS_stat_3 {
+  top: calc(var(--LHS-stat-height) * 2 + var(--LHS-stat-1-height));
+}
+
+.LHS_stat_4 {
+  top: calc(var(--LHS-stat-height) * 3 + var(--LHS-stat-1-height));
+}
+
+.LHS_stat_5 {
+  top: calc(var(--LHS-stat-height) * 4 + var(--LHS-stat-1-height));
+}
+
+.LHS_stat_title {
+  width: 50mm;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 0mm;
+  left: 8mm;
+  font-family: Heebo;
+  font-weight: Bold;
+  font-size: 5.5mm;
+  opacity: 1;
+  text-align: left;
+}
+
+.LHS_stat_indication {
+  width: 9mm;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 6mm;
+  left: 8mm;
+  font-family: Heebo;
+  font-weight: Regular;
+  font-size: 4mm;
+  opacity: 1;
+  text-align: left;
+} */
+
+/* .LHS_stat_icon {
+  width: 6mm;
+  height: 5mm;
+  background: rgba(224, 14, 51, 1);
+  opacity: 1;
+  position: relative;
+  top: 1.5mm;
+  left: mm;
+} */
+
+/*RHS*/
+
+/* :root {
+  --RHS-stat-1-height: 40mm;
+  --RHS-height:150mm;
+  --RHS-width:70mm;
+  --RHS-stat-height:30mm;
+} */
+
+/* .RHS_stat_1,.RHS_stat_2,.RHS_stat_3{
+  width: calc(var(--RHS-width) * 0.8);
+  height: var(--RHS-stat-height);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: var(--RHS-stat-1-height);
+  left: 7mm;
+  overflow: hidden;
+}
+
+.RHS_stat_1 {
+  top: var(--RHS-stat-1-height);
+}
+.RHS_stat_2 {
+  top: calc(var(--RHS-stat-height) + var(--RHS-stat-1-height));
+}
+
+.RHS_stat_3 {
+  top: calc(var(--RHS-stat-height) * 2 + var(--RHS-stat-1-height));
+} */
