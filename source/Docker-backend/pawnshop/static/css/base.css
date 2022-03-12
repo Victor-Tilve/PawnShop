@@ -1,5 +1,6 @@
 :root {
   --background-color:#3D68B2;
+  --background-light-color:#FFFFFF;
   --LHS-stat-height: 12mm;
   --dock-height: 20mm;
 }
@@ -18,7 +19,15 @@ html, body {
 .bluetext {
   color: var(--background-color);
 }
+.whitetext {
+  color: var(--background-light-color);
+}
 
+  /****************** Nav ************************** */
+  .navhigh {
+    width: 8%;
+  }
+  
   /****************** Dock ************************** */
 
 /* Extending the root variables */
@@ -75,8 +84,8 @@ html, body {
 
 .RHS_pane {
   width: var(--HS-width);
-  height: 100%;
-  top: 0%;
+  height: 80%;
+  top: 10%;
   right: 0mm;
   margin: 0;
   position: absolute;
@@ -86,9 +95,9 @@ html, body {
 }
 .LHS_pane {
   width: var(--HS-width);
-  height: 100%;
+  height: 80%;
   position: absolute;
-  top: 0mm;
+  top: 10%;
   left: 0mm;
 }
 .LHS_pane .wrapper,.RHS_pane .wrapper{

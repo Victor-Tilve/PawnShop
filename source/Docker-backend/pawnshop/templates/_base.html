@@ -61,15 +61,15 @@
     >
     <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> -->
     <a class="mr-md-auto float-left" href="{% url 'home' %}">
-      <img src="{% static 'images/home/logo2.png' %}" alt="" height="70" />
+      <img src="{% static 'images/home/logo2.png' %}" alt="" height="50" />
     </a>
     
     <nav class="my-2 my-md-0 mr-md-3 h3 ">
-      <a class="p-2 text-dark" href="{% url 'clients-home' %}">Clientes</a>
-      <a class="p-2 text-dark" href="{% url 'loans-home' %}">Préstamos</a>
-      <a class="p-2 text-dark" href="{% url 'abonos-home' %}">Abonos</a>
-      <a class="p-2 text-dark" href="{% url 'adicionales-home' %}">Adicionales</a>
-      <a class="p-2 text-dark" href="#">Corte Semanal</a>
+      <a class="p-2 whitetext" href="{% url 'clients-home' %}">Clientes</a>
+      <a class="p-2 whitetext" href="{% url 'loans-home' %}">Préstamos</a>
+      <a class="p-2 whitetext" href="{% url 'abonos-home' %}">Abonos</a>
+      <a class="p-2 whitetext" href="{% url 'adicionales-home' %}">Adicionales</a>
+      <a class="p-2 whitetext" href="#">Corte Semanal</a>
     </nav>
     <div class="dropdown">
       <button 
@@ -79,13 +79,13 @@
       aria-expanded="false"
       style="background-color: var(--background-color);"
       >
-      <a class="p-2 text-dark"> 
+      <a class="p-2 bluetext"> 
         <strong>{{ user.username }}</strong></a>
       <!-- <strong> {{ user.username }} </strong> -->
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-        <a class="dropdown-item" href="#">Configuración</a>
+        <a class="dropdown-item bluetext" href="{% url 'logout' %}">Logout</a>
+        <a class="dropdown-item bluetext" href="#">Configuración</a>
       </div>
     </div>
     </div>
