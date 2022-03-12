@@ -24,3 +24,8 @@ Docs/04 - Evidencia de Desarrollo/01-02-2022/*
 source/Docker-backend/nginx/*
 source/Docker-backend/postgres-backup.sql
 source/Docker-backend/postgres-backup2.sql
+
+source/Docker-backend/HMI/__pycache__/app.cpython-38.pyc
+source/Docker-backend/HMI/__pycache__
+source/Docker-backend/HMI/build
+source/Docker-backend/HMI/dist
