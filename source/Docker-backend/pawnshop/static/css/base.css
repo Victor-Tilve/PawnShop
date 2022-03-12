@@ -1,5 +1,5 @@
 :root {
-  --background-color:#469CF6;
+  --background-color:#3D68B2;
   --LHS-stat-height: 12mm;
   --dock-height: 20mm;
 }
@@ -12,6 +12,12 @@ html, body {
     height: 100%;
     width: 100%;
   }
+
+/****************** font ************************** */
+
+.bluetext {
+  color: var(--background-color);
+}
 
   /****************** Dock ************************** */
 
