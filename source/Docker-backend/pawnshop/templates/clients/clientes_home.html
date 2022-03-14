@@ -4,42 +4,91 @@
 {% endblock javascript %} 
 
 
-
 {% block content %}
 
-<div class="row float-left mt-1 ml-3 mb-1 mr-1">
-  <h2><strong>Resumen de Clientes</strong></h2>
+
+<link
+rel="stylesheet"
+href="{% static 'css/charts.min.css' %}"
+/>
+<div class="Superior">
+  <div class="row float-left mt-1 ml-3 mb-1 mr-1">
+    <h2><strong>Resumen de Clientes</strong></h2>
   </div>
-  <div class="row float-right mt-1 ml-3 mb-1 mr-1">
-  
-  <a class="p-2 text-dark" href="{% url 'clients-crear' %}">
-    <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
-  </a>
-  
-  <a class="p-2 text-dark" href="{% url 'clients-buscar' %}">
-    <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
-  </a>
-  
+  <div class="row float-right mt-1 ml-3 mb-1 mr-1">  
+    <a class="p-2 text-dark" href="{% url 'clients-crear' %}">
+      <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
+    </a>
+    <a class="p-2 text-dark" href="{% url 'clients-buscar' %}">
+      <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
+    </a>
+  </div> 
 </div>
 
-<table class="table">
-  <thead>
-    <tr class="h4 text-center">
-      <th scope="col">ID</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Cédula</th>
-    </tr>
-  </thead>
-  <tbody id="id_tabla_clients" class="h4 text-center">
-  {% for cliente in clientes %}
-  <tr>
-    <th scope="row">{{cliente.pk}}</th>
-    <td>{{cliente.nombre}}</td>
-    <td>{{cliente.apellido}}</td>
-    <td>{{cliente.cedula}}</td>
-  </tr>
-  {% endfor %}
-  </tbody>
-</table>
+<div class="tablewrapper">
+  <div class="row container">
+    <div class="col card ml-3 mr-3 ">
+      <div class="card-body" >
+        <h4 class="card-title">Basic Table</h4>
+        <p class="card-description"> Basic table with card </p>
+        
+        <table class="table">
+          <thead>
+            <tr class="h4 text-center">
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Cédula</th>
+            </tr>
+          </thead>
+          <tbody id="id_tabla_clients" class="h4 text-center">
+          {% for cliente in clientes %}
+          <tr>
+            <th scope="row">{{cliente.pk}}</th>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellido}}</td>
+            <td>{{cliente.cedula}}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% comment %} <div class="col card ml-3 mr-3 ">
+      <div class="card-body">
+        <h4 class="card-title">Basic Table</h4>
+        <p class="card-description"> Basic table with card </p>
+        <table id="my-colum-chart" class="charts-css column show-labels show-primary-axis show-4-secondary-axes show-data-axes">
+          <caption> Column Example #15 </caption> 
+          <thead>
+            <tr>
+              <th scope="col"> Year </th> 
+              <th scope="col"> Progress </th>
+            </tr>
+          </thead> 
+          <tbody>
+            <tr><th scope="row"> 2016 </th><td style="--size:0.2;"></td></tr> 
+            <tr><th scope="row"> 2017 </th> <td style="--size:0.8;"></td></tr> 
+            <tr><th scope="row"> 2018 </th> <td style="--size:0.4;"></td></tr> 
+            <tr><th scope="row"> 2019 </th> <td style="--size:0.6;"></td></tr>
+            <tr><th scope="row"> 2020 </th> <td style="--size:0.2;"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>     {% endcomment %}
+  </div>
+</div>
+{% comment %} <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>   {% endcomment %}
+
+</div>
+
+
 {% endblock content %}
