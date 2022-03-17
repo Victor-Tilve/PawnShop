@@ -4,3 +4,4 @@
 commands.txt
 Pipfile
 Pipfile.lock
+pawnshop/node_modules/*

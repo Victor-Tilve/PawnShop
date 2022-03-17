@@ -1,37 +1,39 @@
 {% extends '_base.html' %} {% load static %} {% block title %}
 <title>Add loan | Django site admin</title>
-{% endblock title %} {% block css %} {% endblock css %} {% block javascript %}
-{% endblock javascript %} 
+{% endblock title %} {% block css %} {% endblock css %} 
+
+
+{% block javascript %}
+<script src="{% static 'js/client/clients-pie-charts.js' %}"></script>
+{% comment %} <script src="{% static 'js/client/clients-bar-charts.js' %}"></script> {% endcomment %}
+{% endblock javascript %}
 
 
 {% block content %}
 
 
-<link
-rel="stylesheet"
-href="{% static 'css/charts.min.css' %}"
-/>
+<link rel="stylesheet" href="{% static 'css/charts.min.css' %}" />
 <div class="Superior">
   <div class="row float-left mt-1 ml-3 mb-1 mr-1">
     <h2><strong>Resumen de Clientes</strong></h2>
   </div>
-  <div class="row float-right mt-1 ml-3 mb-1 mr-1">  
+  <div class="row float-right mt-1 ml-3 mb-1 mr-1">
     <a class="p-2 text-dark" href="{% url 'clients-crear' %}">
-      <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
+      <img src="{% static 'images/base/add.png' %}" alt="" height="25" />
     </a>
     <a class="p-2 text-dark" href="{% url 'clients-buscar' %}">
-      <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
+      <img src="{% static 'images/base/search3.png' %}" alt="" height="25" />
     </a>
-  </div> 
+  </div>
 </div>
 
-<div class="tablewrapper">
-  <div class="row container">
-    <div class="col card ml-3 mr-3 ">
-      <div class="card-body" >
-        <h4 class="card-title">Basic Table</h4>
-        <p class="card-description"> Basic table with card </p>
-        
+<div class="row ">
+  <div class="col-5 card ml-3 mr-3 ">
+    <div class="card-body">
+      <h4 class="card-title">Clientes Regitrados</h4>
+      <p class="card-description"> Información básica de clientes </p>
+
+      <div class="tablewrapper">
         <table class="table">
           <thead>
             <tr class="h4 text-center">
@@ -42,51 +44,43 @@ href="{% static 'css/charts.min.css' %}"
             </tr>
           </thead>
           <tbody id="id_tabla_clients" class="h4 text-center">
-          {% for cliente in clientes %}
-          <tr>
-            <th scope="row">{{cliente.pk}}</th>
-            <td>{{cliente.nombre}}</td>
-            <td>{{cliente.apellido}}</td>
-            <td>{{cliente.cedula}}</td>
-          </tr>
-          {% endfor %}
+            {% for cliente in clientes %}
+            <tr>
+              <th scope="row">{{cliente.pk}}</th>
+              <td>{{cliente.nombre}}</td>
+              <td>{{cliente.apellido}}</td>
+              <td>{{cliente.cedula}}</td>
+            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
     </div>
-    {% comment %} <div class="col card ml-3 mr-3 ">
+  </div>
+  <div class="col-5 flex-box">
+    
+    <div class="card ">
       <div class="card-body">
-        <h4 class="card-title">Basic Table</h4>
-        <p class="card-description"> Basic table with card </p>
-        <table id="my-colum-chart" class="charts-css column show-labels show-primary-axis show-4-secondary-axes show-data-axes">
-          <caption> Column Example #15 </caption> 
-          <thead>
-            <tr>
-              <th scope="col"> Year </th> 
-              <th scope="col"> Progress </th>
-            </tr>
-          </thead> 
-          <tbody>
-            <tr><th scope="row"> 2016 </th><td style="--size:0.2;"></td></tr> 
-            <tr><th scope="row"> 2017 </th> <td style="--size:0.8;"></td></tr> 
-            <tr><th scope="row"> 2018 </th> <td style="--size:0.4;"></td></tr> 
-            <tr><th scope="row"> 2019 </th> <td style="--size:0.6;"></td></tr>
-            <tr><th scope="row"> 2020 </th> <td style="--size:0.2;"></td></tr>
-          </tbody>
-        </table>
+        <h4 class="card-title text-center">Cantidad de clientes creados</h4>
+        <p class="card-description text-center"> Entre Enero y mayo de 2022</p>
+        <div class="chart-container" style="width: 70%;">
+          <canvas id="bar-chart" ></canvas>
+        </div>
       </div>
-    </div>     {% endcomment %}
+    </div>
+    <div class="card ">
+    <div class="card-body">
+      <h4 class="card-title text-center">Cantidad de clientes creados</h4>
+      <div class="chart-container" style="width: 30%;">
+          <canvas  height="30px" id="pie-chart" style="justify-context: center;"></canvas>
+      </div>
+    </div>  
+    </div>  
+    {% comment %} <div class="col-3 card ml-3 mr-3">
+    </div> {% endcomment %}
   </div>
 </div>
-{% comment %} <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>   {% endcomment %}
+
 
 </div>
 

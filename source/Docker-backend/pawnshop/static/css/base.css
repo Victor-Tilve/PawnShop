@@ -110,20 +110,66 @@ html, body {
 }
 
 /****************** Charts ************************** */
-.Superior{
-  width: 100%;
-  height: 60px;
-}
 #my-colum-chart.column {
   height: 300px;
   max-width: 400px;
   margin: 0 auto;
 }
+#my-colum-chart {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: 250px 50px;
+  grid-template-areas:
+    "data-axis chart"
+    ".         primary-axis";
+}
+#my-colum-chart > table {
+  grid-area: chart;
+}
+#my-colum-chart > .primary-axis {
+  grid-area: primary-axis;
+}
+#my-colum-chart > .data-axis {
+  grid-area: data-axis;
+  writing-mode: tb-rl;
+  transform: rotateZ(180deg);
+}
+.Superior{
+  width: 100%;
+  height: 60px;
+}
 .tablewrapper {
-  max-height: 100px;
+  max-height: 450px;
   overflow: auto;
   display:inline-block;
+  transform: translate(8%,0%);
 }
+.chart-container {
+  vertical-align: baseline;
+  height: 513;
+  width: 256;
+}
+.flex-box {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* #axes-example-13 {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: 250px 50px;
+  grid-template-areas:
+    "data-axis chart"
+    ".         primary-axis";
+  background-color: #eee;
+  width: 650px;
+} */
+
 
 
 /* .LHS_stat_1,.LHS_stat_2,.LHS_stat_3,.LHS_stat_4,.LHS_stat_5 {
