@@ -106,3 +106,6 @@ p {
     padding: .375rem .5625rem;
     font-weight: normal
 }
+.chart-container{
+    justify-content: center;
+}
