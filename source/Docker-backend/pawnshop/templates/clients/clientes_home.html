@@ -12,7 +12,6 @@
 {% block content %}
 
 
-<link rel="stylesheet" href="{% static 'css/charts.min.css' %}" />
 <div class="Superior">
   <div class="row float-left mt-1 ml-3 mb-1 mr-1">
     <h2 style=" "><strong>Resumen de Clientes</strong></h2>
@@ -69,20 +68,25 @@
       </div>
     </div>
     <div class="card ">
+<<<<<<< HEAD
     <div class="card-body">
       <h4 class="card-title text-center">Cantidad de clientes creados</h4>
       <div class="chart-container" style="width: 30%;margin-left: 250px;">
           <canvas  height="30px" id="pie-chart" ></canvas>
       </div>
     </div>  
+=======
+      <div class="card-body">
+        <h4 class="card-title text-center">Cantidad de clientes creados</h4>
+        <div class="chart-container" style="width: 30%;margin-left: 250px;">
+            <canvas  height="30px" id="pie-chart" style="justify-context: center;"></canvas>
+        </div>
+      </div>  
+>>>>>>> master
     </div>  
-    {% comment %} <div class="col-3 card ml-3 mr-3">
-    </div> {% endcomment %}
   </div>
 </div>
 
-
-</div>
 
 
 {% endblock content %}

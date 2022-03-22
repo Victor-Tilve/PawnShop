@@ -10,14 +10,9 @@
 
 <div class="Superior">
   <div class="row float-left mt-1 ml-3 mb-1 mr-1">
-    <h2><strong>Resumen de Prestamos</strong></h2>
+    <h2><strong><a href="{% url 'loans-home' %}" style="color: black;"> Resumen de Prestamos</a></strong></h2>
   </div>
     
-  <div class="row float-center mt-1 ml-3 mb-1 mr-1">
-    <h3><strong><a href="{% url 'loans-vencidos' %}" style="color: black;"> Vencidos<a/></strong></h3>
-    <h3><strong><a href="{% url 'loans-cobrar_hoy' %}" style="color: black;">Cobrar Hoy</a></strong></h3>
-  </div>
-
   <div class="row float-right mt-1 ml-3 mb-1 mr-1">
     <a class="p-2 text-dark" href="{% url 'loans-crear' %}">
       <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
@@ -75,7 +70,7 @@
     </div>  
   </div> {% endcomment %}
 </div>
-{% comment %} estoy tomando el ejemplo de clientes, debo hacer uno propio para prestamos {% endcomment %}
 <script src="{% static 'js/client/clients-pie-charts.js' %}"></script>
-<script src="{% static 'js/loan/tabla_loan.js' %}"></script>
+{% comment %} estoy tomando el ejemplo de clientes, debo hacer uno propio para prestamos {% endcomment %}
+{% comment %} <script src="{% static 'js/loan/tabla_loan.js' %}"></script> {% endcomment %}
 {% endblock content %}

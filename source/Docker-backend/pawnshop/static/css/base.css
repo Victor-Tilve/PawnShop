@@ -144,7 +144,7 @@ html, body {
   max-height: 450px;
   overflow: auto;
   display:inline-block;
-  transform: translate(8%,0%);
+  transform: translate(0%,0%);
 }
 .chart-container {
   vertical-align: baseline;
