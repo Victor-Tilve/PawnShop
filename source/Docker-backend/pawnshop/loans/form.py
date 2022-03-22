@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import TipoPago, Loan
+from .models import TipoPago, Loan,LoanDate
 
 # Crear un nuevo elemento en trabla
 
@@ -29,3 +29,16 @@ class LoanForm(ModelForm):
 class CronForm(forms.Form):
     tipo_de_pago = forms.ModelChoiceField(
         queryset=TipoPago.objects.all().order_by('tipo'))
+
+class LoanDateForm(ModelForm):
+    class Meta:
+        model = LoanDate
+        fields = [
+            'loan',
+            'cliente',
+            'date_para_pago',
+            'cuota_mensual',
+            'status',
+            'date_de_pago',
+            'retrasado',
+        ]
