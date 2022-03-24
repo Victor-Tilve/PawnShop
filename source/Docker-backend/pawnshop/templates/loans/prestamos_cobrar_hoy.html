@@ -25,7 +25,7 @@
 </div>
 
 <div class="row  ">
-  <div class="col-6 card ml-3 mr-3 ">
+  <div class="col-8 card ml-3 mr-3 ">
     <div class="card-body">
       <h4 class="card-title">Clientes Regitrados</h4>
       <p class="card-description"> Información básica de clientes </p>
@@ -34,10 +34,10 @@
         <table class="table">
           <thead>
             <tr class="h4 text-center">
-              <th scope="col">Codigo prestamo</th>
-              <th scope="col">Monto prestado</th>
-              <th scope="col">Monto adeudado</th>
-              <th scope="col">Numero de meses</th>
+              <th scope="col">Cobrar hoy ID</th>
+              <th scope="col">Loan ID</th>
+              <th scope="col">Fecha de pago</th>
+              <th scope="col">Cuota mensual</th>
               <th scope="col">ID Cliente</th>
               <th scope="col">Nombre cliente</th>
             </tr>
@@ -70,7 +70,7 @@
     </div>  
   </div> {% endcomment %}
 </div>
-<script src="{% static 'js/client/clients-pie-charts.js' %}"></script>
+{% comment %} <script src="{% static 'js/client/clients-pie-charts.js' %}"></script> {% endcomment %}
 {% comment %} estoy tomando el ejemplo de clientes, debo hacer uno propio para prestamos {% endcomment %}
-{% comment %} <script src="{% static 'js/loan/tabla_loan.js' %}"></script> {% endcomment %}
+<script src="{% static 'js/loan/tabla_cobrar_hoy_loan.js' %}"></script>
 {% endblock content %}

@@ -3,14 +3,15 @@ $( document ).ready(function() {
   // console.log("Dentro de documento")
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:8000/loans/get/ajax/validate/tabla_vencidos",
-    data: { fecha_hoy: fecha_hoy },
+    url: "http://127.0.0.1:8000/loans/get/ajax/validate/tabla_tabla_cobrar_hoy",
+    // data: { fecha_hoy: fecha_hoy },
     success: function (response) {
-      // let tabla = response["_prestamo_imformacion"];
-      // $("#id_tabla_prestamo").html("");
-      // for (let i = 0; i < tabla.length; i++) {
-      //   $("#id_tabla_prestamo").append(tabla[i]);
-      // }
+      let tabla = response["table_loan_date"];
+      // console.log(tabla)
+      $("#id_tabla_prestamo").html("");
+      for (let i = 0; i < tabla.length; i++) {
+        $("#id_tabla_prestamo").append(tabla[i]);
+      }
   
     },
     error: function (response) {
