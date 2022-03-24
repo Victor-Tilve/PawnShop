@@ -161,21 +161,24 @@ def loan_cobrar_hoy(request):
 def loan_vencidos(request):
     return render(request, 'loans/prestamos_vencidos.html')
 
-def tabla_vencidos(request):
+def tabla_cobrar_hoy(request):
     if request.is_ajax and request.method == "GET":
         tables = []
-        fecha_hoy = request.GET.get("fecha_hoy", None)
+        # fecha_hoy = request.GET.get("fecha_hoy", None)
         #filtra los prestamos que aun estan activos
         cobrar_hoy_table = LoanDate.objects.values()
-        for prestamo in cobrar_hoy_table:
+        for cobrar_hoy in cobrar_hoy_table:
             # cliente = list(Client.objects.filter(pk=prestamo.cliente))
-            cliente_nombre = list(Client.objects.filter(pk=prestamo["cliente_id"]).values())[0]["nombre"]
-            cliente_apellido = list(Client.objects.filter(pk=prestamo["cliente_id"]).values())[0]["apellido"]
+            cliente_nombre = list(Client.objects.filter(pk=cobrar_hoy["cliente_id"]).values())[0]["nombre"]
+            cliente_apellido = list(Client.objects.filter(pk=cobrar_hoy["cliente_id"]).values())[0]["apellido"]
+            # print(cliente_nombre)
             tables.append(
-                f'<tr><th scope="row">{prestamo["id"]}</th><td>{prestamo["monto_prestado"]}</td><td>{prestamo["monto_adeudado"]}</td><td>{prestamo["num_meses"]}</td><td>{prestamo["cliente_id"]}</td><td>{cliente_nombre} {cliente_apellido}</td></tr>'
+                f'<tr><th scope="row">{cobrar_hoy["id"]}</th><td>{cobrar_hoy["loan_id"]}</td><td>{cobrar_hoy["date_para_pago"]}</td><td>{cobrar_hoy["cuota_mensual"]}</td><td>{cobrar_hoy["cliente_id"]}</td><td>{cliente_nombre} {cliente_apellido}</td></tr>'
             )
+
+        # print(tables)
         
-        return JsonResponse({"_prestamo_imformacion":tables}, status = 200)
+        return JsonResponse({"table_loan_date":tables}, status = 200)
 
         
     return JsonResponse({}, status = 400)
