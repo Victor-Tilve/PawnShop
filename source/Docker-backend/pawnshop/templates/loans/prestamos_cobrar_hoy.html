@@ -23,12 +23,31 @@
     </a>
   </div>
 </div>
-
+<div class="row ml-4 mt-4 mb-4">
+  <div class="col-1">
+    <label class="required" for="id_monto_prestado">
+      <strong> <h5>Fecha de prestamo:</h5> </strong>
+    </label>
+  </div>
+  <div class="col-1">
+    <input
+      type="date"
+      name="fecha_hoy"
+      value="0"
+      min="0"
+      required=""
+      id="id_fecha_hoy"
+    />
+  </div>
+</div>
+<button type="button" class="btn btn-light ml-3 mr-3" id="id_buscar_fecha">
+  <strong><h4>Buscar</h4></strong>
+</button>
 <div class="row  ">
   <div class="col-8 card ml-3 mr-3 ">
     <div class="card-body">
-      <h4 class="card-title">Clientes Regitrados</h4>
-      <p class="card-description"> Información básica de clientes </p>
+      <h4 class="card-title">Cleintes con fecha de pago para Hoy</h4>
+      <p class="card-description"> Lista de todos los clientes que aún no han pagado </p>
 
       <div class="tablewrapper">
         <table class="table">

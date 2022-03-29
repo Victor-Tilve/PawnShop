@@ -166,7 +166,9 @@ def tabla_cobrar_hoy(request):
         tables = []
         # fecha_hoy = request.GET.get("fecha_hoy", None)
         #filtra los prestamos que aun estan activos
-        cobrar_hoy_table = LoanDate.objects.values()
+        _fecha_hoy = request.GET["fecha_hoy"]
+        cobrar_hoy_table = LoanDate.objects.filter(date_para_pago=_fecha_hoy,status=EstadoPago.objects.get(pk='3')).values()
+        # print(cobrar_hoy_table)
         for cobrar_hoy in cobrar_hoy_table:
             # cliente = list(Client.objects.filter(pk=prestamo.cliente))
             cliente_nombre = list(Client.objects.filter(pk=cobrar_hoy["cliente_id"]).values())[0]["nombre"]
