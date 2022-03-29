@@ -29,5 +29,10 @@ source/Docker-backend/HMI/__pycache__/app.cpython-38.pyc
 source/Docker-backend/HMI/__pycache__
 source/Docker-backend/HMI/build
 source/Docker-backend/HMI/dist
+<<<<<<< HEAD
+
+source/Docker-backend/pawnshop/*/migrations/*
+=======
 source/Docker-backend/pawnshop/clients/migrations/*
 source/Docker-backend/pawnshop/loans/migrations/*
+>>>>>>> c5f333e44c42e69f938510d656b48701257829b1
