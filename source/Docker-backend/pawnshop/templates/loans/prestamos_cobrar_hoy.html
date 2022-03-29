@@ -11,40 +11,59 @@
 <div class="Superior">
   <div class="row float-left mt-1 ml-3 mb-1 mr-1">
     <h2><strong><a href="{% url 'loans-home' %}" style="color: black;"> Resumen de Prestamos</a></strong></h2>
+ 
+    </div>
+    <div class="row float-right mt-1 ml-3 mb-1 mr-1">
+      <a class="p-2 text-dark" href="{% url 'loans-crear' %}">
+        <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
+      </a>
+      
+      <a class="p-2 text-dark" href="{% url 'loans-buscar' %}">
+        <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
+      </a>
+    </div>
+   
   </div>
     
-  <div class="row float-right mt-1 ml-3 mb-1 mr-1">
-    <a class="p-2 text-dark" href="{% url 'loans-crear' %}">
-      <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
-    </a>
+
+</div>
+
+<div class="">
+  <div class="row  ml-3 mt-1 mb-1" style="margin-left:30px">
+    <div class=" col-1">
+      <label class="required" for="id_monto_prestado">
+        <strong> <h5>Fecha de prestamo:</h5> </strong>
+      </label>
+    </div>
+    <div class="col-1">
+      <input
+        type="date"
+        name="fecha_hoy"
+        value="0"
+        min="0"
+        required=""
+        id="id_fecha_hoy"
+      />
+      
+    </div>
     
-    <a class="p-2 text-dark" href="{% url 'loans-buscar' %}">
-      <img src="{% static 'images/base/search3.png' %}" alt="" height="25"/>
-    </a>
   </div>
+  <div>
+    <button  type="button" class="btn btn-light ml-3 mr-3" id="id_buscar_fecha" >
+      <strong><h4>Buscar</h4></strong>
+    </button>
+  </div>
+
+
+
+
+
 </div>
-<div class="row ml-4 mt-4 mb-4">
-  <div class="col-1">
-    <label class="required" for="id_monto_prestado">
-      <strong> <h5>Fecha de prestamo:</h5> </strong>
-    </label>
-  </div>
-  <div class="col-1">
-    <input
-      type="date"
-      name="fecha_hoy"
-      value="0"
-      min="0"
-      required=""
-      id="id_fecha_hoy"
-    />
-  </div>
-</div>
-<button type="button" class="btn btn-light ml-3 mr-3" id="id_buscar_fecha">
-  <strong><h4>Buscar</h4></strong>
-</button>
-<div class="row  ">
-  <div class="col-8 card ml-3 mr-3 ">
+
+
+
+<div class=" " style="display: flex; margin-left: 50px">
+  <div class="col-7 card ml-3 mr-3 ">
     <div class="card-body">
       <h4 class="card-title">Cleintes con fecha de pago para Hoy</h4>
       <p class="card-description"> Lista de todos los clientes que aún no han pagado </p>
@@ -68,9 +87,9 @@
       </div>
     </div>
   </div>
-  {% comment %} <div class="col-5 flex-box" >
+  <div class="col-4.7 flex-box" >
     
-    <div class="card ">
+    <div class="card " style="margin-right:20px">
       <div class="card-body">
         <h4 class="card-title text-center">Cantidad de clientes creados</h4>
         <p class="card-description text-center"> Entre Enero y mayo de 2022</p>
@@ -79,17 +98,17 @@
         </div>
       </div>
     </div>
-    <div class="card ">
-    <div class="card-body">
-      <h4 class="card-title text-center">Cantidad de clientes creados</h4>
-      <div class="chart-container" style="width: 30%;margin-left: 250px;">
-          <canvas  height="30px" id="pie-chart" style="justify-context: center;"></canvas>
+        <div class="card" style="margin-right:20px" >
+      <div class="card-body">
+        <h4 class="card-title text-center">Cantidad de clientes creados</h4>
+        <div class="chart-container" style="width: 30%; margin-left: 160px">
+          <canvas height="60px" id="pie-chart"></canvas>
+        </div>
       </div>
-    </div>  
-    </div>  
-  </div> {% endcomment %}
+  </div> 
+ 
 </div>
-{% comment %} <script src="{% static 'js/client/clients-pie-charts.js' %}"></script> {% endcomment %}
+<script src="{% static 'js/client/clients-pie-charts.js' %}"></script> 
 {% comment %} estoy tomando el ejemplo de clientes, debo hacer uno propio para prestamos {% endcomment %}
 <script src="{% static 'js/loan/tabla_cobrar_hoy_loan.js' %}"></script>
 {% endblock content %}
