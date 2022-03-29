@@ -9,16 +9,11 @@
 
 
 <div class="Superior">
-  <div class=" float-left  ml-3 mb-1 mr-1">
-    <h2><strong>Resumen de Prestamos</strong></h2>
+  <div class="row float-left mt-1 ml-3 mb-1 mr-1">
+    <h2><strong><a href="{% url 'loans-home' %}" style="color: black;"> Resumen de Prestamos</a></strong></h2>
   </div>
     
-  <div class="row float-center ml-3 mb-1 mr-1">
-    <h3><strong><a href="{% url 'loans-vencidos' %}" style="color: black;"> Vencidos<a/></strong></h3>
-    <h3><strong><a href="{% url 'loans-cobrar_hoy' %}" style="color: black;">Cobrar Hoy</a></strong></h3>
-  </div>
-
-  <div class="float-right  ml-3 mb- mr-1">
+  <div class="row float-right mt-1 ml-3 mb-1 mr-1">
     <a class="p-2 text-dark" href="{% url 'loans-crear' %}">
       <img src="{% static 'images/base/add.png' %}" alt="" height="25"/>
     </a>
@@ -29,13 +24,13 @@
   </div>
 </div>
 
-<div class=" "style="display: flex; margin-left: 50px">
+<div class="row  ">
   <div class="col-6 card ml-3 mr-3 ">
     <div class="card-body">
       <h4 class="card-title">Clientes Regitrados</h4>
       <p class="card-description"> Información básica de clientes </p>
 
-      <div class="tablewrapper" style="width: 800px;  max-height: 600px">
+      <div class="tablewrapper">
         <table class="table">
           <thead>
             <tr class="h4 text-center">
@@ -54,7 +49,7 @@
       </div>
     </div>
   </div>
-  <div class="col-5 flex-box" >
+  {% comment %} <div class="col-5 flex-box" >
     
     <div class="card ">
       <div class="card-body">
@@ -73,9 +68,9 @@
       </div>
     </div>  
     </div>  
-  </div> 
+  </div> {% endcomment %}
 </div>
 {% comment %} estoy tomando el ejemplo de clientes, debo hacer uno propio para prestamos {% endcomment %}
 <script src="{% static 'js/client/clients-pie-charts.js' %}"></script>
-<script src="{% static 'js/loan/tabla_loan.js' %}"></script>
+{% comment %} <script src="{% static 'js/loan/tabla_loan.js' %}"></script> {% endcomment %}
 {% endblock content %}

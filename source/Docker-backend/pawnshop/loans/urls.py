@@ -4,5 +4,8 @@ urlpatterns = [
 path('', views.loan_home_view,name='loans-home'),
 path('crear/', views.loan_create_view,name='loans-crear'),
 path('buscar/', views.loan_search_view,name='loans-buscar'),
-path('get/ajax/validate/tabla', views.tabla_prestamo, name = "tabla_prestamo")
+path('get/ajax/validate/tabla', views.tabla_prestamo, name = "tabla_prestamo"),
+path('cobrarhoy/', views.loan_cobrar_hoy,name='loans-cobrar_hoy'),
+path('vencidos/', views.loan_vencidos,name='loans-vencidos'),
+path('get/ajax/validate/tabla_vencidos', views.tabla_prestamo, name = "tabla_vencidos"),
 ]
