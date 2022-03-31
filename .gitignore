@@ -29,3 +29,5 @@ source/Docker-backend/HMI/__pycache__/app.cpython-38.pyc
 source/Docker-backend/HMI/__pycache__
 source/Docker-backend/HMI/build
 source/Docker-backend/HMI/dist
+source/Docker-backend/postgres-backup_31-03-2022.sql
+source/Docker-backend/postgres-backup_31-03-2022.sql.gz
