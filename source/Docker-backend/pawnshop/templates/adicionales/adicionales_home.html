@@ -1,6 +1,8 @@
 {% extends '_base.html' %} {% load static %} {% block title %}
 <title>Add loan | Django site admin</title>
 {% endblock title %} {% block css %} {% endblock css %} {% block javascript %}
+<script src="{% static 'js/adicionales/tablas_adicionales.js' %}"></script>
+
 <script src="{% static 'js/client/clients-pie-charts.js' %}"></script>
 {% comment %}
 <script src="{% static 'js/client/clients-bar-charts.js' %}"></script>
@@ -11,7 +13,7 @@
     <h2 style=""><strong>Resumen de Clientes</strong></h2>
   </div>
   <div class="row float-right mt-1 ml-3 mb-1 mr-1">
-    <a class="p-2 text-dark" href="{% url 'clients-crear' %}">
+    <a class="p-2 text-dark" href="{% url 'adicionales-crear' %}">
       <img src="{% static 'images/base/add.png' %}" alt="" height="25" />
     </a>
     <a class="p-2 text-dark" href="{% url 'clients-buscar' %}">
@@ -23,9 +25,9 @@
 <div class=" " style="display: flex; margin-left: 50px">
   <div class="col-7 card ml-2 mr-2">
     <div class="card-body">
-      <h4 class="card-title" style="margin-left: 250px">Clientes Regitrados</h4>
+      <h4 class="card-title" style="margin-left: 250px">Adicionales Regitrados</h4>
       <p class="card-description" style="margin-left: 250px">
-        Información básica de clientes
+        Información básica de Adicionales
       </p>
 
       <div
